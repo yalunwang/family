@@ -1,0 +1,6 @@
+E:\vs项目\adressDEMO\Dataacess\bin\Debug\Dataacess.dll.config
+E:\vs项目\adressDEMO\Dataacess\bin\Debug\Dataacess.dll
+E:\vs项目\adressDEMO\Dataacess\bin\Debug\Dataacess.pdb
+E:\vs项目\adressDEMO\Dataacess\obj\Debug\Dataaccess.csprojResolveAssemblyReference.cache
+E:\vs项目\adressDEMO\Dataacess\obj\Debug\Dataacess.dll
+E:\vs项目\adressDEMO\Dataacess\obj\Debug\Dataacess.pdb

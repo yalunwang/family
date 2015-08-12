@@ -1,0 +1,13 @@
+E:\vs项目\adressDEMO\adressDEMO\obj\Debug\adressDEMO.csprojResolveAssemblyReference.cache
+E:\vs项目\adressDEMO\adressDEMO\bin\adressDEMO.dll.config
+E:\vs项目\adressDEMO\adressDEMO\bin\adressDEMO.dll
+E:\vs项目\adressDEMO\adressDEMO\bin\adressDEMO.pdb
+E:\vs项目\adressDEMO\adressDEMO\bin\Dataacess.dll
+E:\vs项目\adressDEMO\adressDEMO\bin\Newtonsoft.Json.dll
+E:\vs项目\adressDEMO\adressDEMO\bin\Dataacess.pdb
+E:\vs项目\adressDEMO\adressDEMO\bin\Newtonsoft.Json.pdb
+E:\vs项目\adressDEMO\adressDEMO\bin\Newtonsoft.Json.xml
+E:\vs项目\adressDEMO\adressDEMO\obj\Debug\adressDEMO.dll
+E:\vs项目\adressDEMO\adressDEMO\obj\Debug\adressDEMO.pdb
+E:\vs项目\adressDEMO\adressDEMO\bin\adressDEMO.dll.CodeAnalysisLog.xml
+E:\vs项目\adressDEMO\adressDEMO\bin\adressDEMO.dll.lastcodeanalysissucceeded

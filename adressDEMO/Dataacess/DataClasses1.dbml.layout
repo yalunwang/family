@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClasses1">
+  <DataContextMoniker Name="/DataClasses1DataContext" />
+  <nestedChildShapes>
+    <classShape Id="29ccd67a-3692-4e35-915e-c900418992fd" absoluteBounds="0.5, 3.125, 2, 1.9535852050781251">
+      <DataClassMoniker Name="/DataClasses1DataContext/Province" />
+      <nestedChildShapes>
+        <elementListCompartment Id="54f5a8cb-0f2d-41ad-b32a-23bbb6db6971" absoluteBounds="0.51500000000000012, 3.585, 1.9700000000000002, 1.393585205078125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dc666d86-862f-4280-8efa-1ce1782a0efd" absoluteBounds="2.375, 1.625, 2, 2.5266442871093751">
+      <DataClassMoniker Name="/DataClasses1DataContext/City" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3b02c8a7-57ac-4009-b0c9-a239b82b8568" absoluteBounds="2.3899999999999997, 2.085, 1.9700000000000002, 1.966644287109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.4374995 : 3.125); (1.4374995 : 2.3749995); (2.375 : 2.3749995)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/Province/Province_City" />
+      <nodes>
+        <classShapeMoniker Id="29ccd67a-3692-4e35-915e-c900418992fd" />
+        <classShapeMoniker Id="dc666d86-862f-4280-8efa-1ce1782a0efd" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d63274ac-1443-4f36-b74f-d580a173c7ac" absoluteBounds="4.375, 0.75, 2, 2.1446048990885416">
+      <DataClassMoniker Name="/DataClasses1DataContext/CityZone" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3143fe62-eeef-47f8-9364-3f8cd3a2aaf3" absoluteBounds="4.3900000000000006, 1.21, 1.9700000000000002, 1.5846048990885415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.375 : 3.22855294954427); (5.19791666666667 : 3.22855294954427 : JumpStart); (5.36458333333333 : 3.22855294954427 : JumpEnd); (6.28125 : 3.22855294954427); (6.28125 : 2.89460489908854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/City/City_CityZone" />
+      <nodes>
+        <classShapeMoniker Id="dc666d86-862f-4280-8efa-1ce1782a0efd" />
+        <classShapeMoniker Id="d63274ac-1443-4f36-b74f-d580a173c7ac" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="59869d31-8bd8-4273-b1fe-40820ad52f52" absoluteBounds="4.125, 3.625, 2, 1.7625655110677081">
+      <DataClassMoniker Name="/DataClasses1DataContext/SmallArea" />
+      <nestedChildShapes>
+        <elementListCompartment Id="08a18434-607b-4eef-a3ff-aa28fbcb123d" absoluteBounds="4.1400000000000006, 4.085, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.125 : 5.26432535807292); (3.3437495 : 5.26432535807292); (3.3437495 : 4.15164428710938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/SmallArea/SmallArea_City" />
+      <nodes>
+        <classShapeMoniker Id="59869d31-8bd8-4273-b1fe-40820ad52f52" />
+        <classShapeMoniker Id="dc666d86-862f-4280-8efa-1ce1782a0efd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.28125 : 2.89460489908854); (5.28125 : 3.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/CityZone/CityZone_SmallArea" />
+      <nodes>
+        <classShapeMoniker Id="d63274ac-1443-4f36-b74f-d580a173c7ac" />
+        <classShapeMoniker Id="59869d31-8bd8-4273-b1fe-40820ad52f52" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -1,0 +1,6 @@
+E:\family\family\easydialog\bin\easydialog.dll.config
+E:\family\family\easydialog\bin\easydialog.dll
+E:\family\family\easydialog\bin\easydialog.pdb
+E:\family\family\easydialog\obj\Debug\easydialog.csprojResolveAssemblyReference.cache
+E:\family\family\easydialog\obj\Debug\easydialog.dll
+E:\family\family\easydialog\obj\Debug\easydialog.pdb

@@ -1,0 +1,13 @@
+E:\family\family\family\obj\Debug\family.csprojResolveAssemblyReference.cache
+E:\family\family\family\bin\family.dll.config
+E:\family\family\family\bin\family.dll
+E:\family\family\family\bin\family.pdb
+E:\family\family\family\bin\BAL.dll
+E:\family\family\family\bin\DataAccess.dll
+E:\family\family\family\bin\ZKEShop.Common.dll
+E:\family\family\family\bin\BAL.pdb
+E:\family\family\family\bin\ZKEShop.Common.pdb
+E:\family\family\family\bin\ZKEShop.Common.xml
+E:\family\family\family\bin\DataAccess.pdb
+E:\family\family\family\obj\Debug\family.dll
+E:\family\family\family\obj\Debug\family.pdb

@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="family" Class="YalunwangDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DELL-PC;Initial Catalog=family;Persist Security Info=True;User ID=sa" SettingsObjectName="DataAccess.Properties.Settings" SettingsPropertyName="familyConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.City" Member="City">
+    <Type Name="City">
+      <Column Name="CityID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CityName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ProvinceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AreaCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IP" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MapFile" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Pingyin" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="SmallAreaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="City_CityZone" Member="CityZone" ThisKey="CityID" OtherKey="CityID" Type="CityZone" />
+      <Association Name="City_Company" Member="Company" ThisKey="CityID" OtherKey="CityID" Type="Company" />
+      <Association Name="City_user" Member="user" ThisKey="CityID" OtherKey="CityID" Type="user" />
+      <Association Name="Province_City" Member="Province" ThisKey="ProvinceID" OtherKey="ProvinceID" Type="Province" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="SmallArea_City" Member="SmallArea" ThisKey="SmallAreaID" OtherKey="SmallAreaID" Type="SmallArea" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CityZone" Member="CityZone">
+    <Type Name="CityZone">
+      <Column Name="CityZoneID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityZoneName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="IP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="MapFile" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Pingyin" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="CityZoneCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="CityZone_Company" Member="Company" ThisKey="CityZoneID" OtherKey="CityZoneID" Type="Company" />
+      <Association Name="CityZone_SmallArea" Member="SmallArea" ThisKey="CityZoneID" OtherKey="CityZoneID" Type="SmallArea" />
+      <Association Name="CityZone_user" Member="user" ThisKey="CityZoneID" OtherKey="CityZoneID" Type="user" />
+      <Association Name="City_CityZone" Member="City" ThisKey="CityID" OtherKey="CityID" Type="City" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Company" Member="Company">
+    <Type Name="Company">
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProvinceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityZoneID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SmallAreaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Describe" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Tellphone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Website" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CompanyTypeID" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="Company_UserCompany" Member="UserCompany" ThisKey="CompanyID" OtherKey="CompanyID" Type="UserCompany" />
+      <Association Name="City_Company" Member="City" ThisKey="CityID" OtherKey="CityID" Type="City" IsForeignKey="true" />
+      <Association Name="CityZone_Company" Member="CityZone" ThisKey="CityZoneID" OtherKey="CityZoneID" Type="CityZone" IsForeignKey="true" />
+      <Association Name="CompanyType_Company" Member="CompanyType" ThisKey="CompanyTypeID" OtherKey="CompanyTypeID" Type="CompanyType" IsForeignKey="true" />
+      <Association Name="Province_Company" Member="Province" ThisKey="ProvinceID" OtherKey="ProvinceID" Type="Province" IsForeignKey="true" />
+      <Association Name="SmallArea_Company" Member="SmallArea" ThisKey="SmallAreaID" OtherKey="SmallAreaID" Type="SmallArea" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CompanyType" Member="CompanyType">
+    <Type Name="CompanyType">
+      <Column Name="CompanyTypeID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="comTypename" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="parentID" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="CompanyType_Company" Member="Company" ThisKey="CompanyTypeID" OtherKey="CompanyTypeID" Type="Company" />
+    </Type>
+  </Table>
+  <Table Name="dbo.consumption" Member="consumption">
+    <Type Name="consumption">
+      <Column Name="consumptionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="YearMonthID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UsergroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="consumTypeID" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="consumAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="consumYear" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="consumMonth" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="consumDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="logdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="remark" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="userCompanyIDs" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Association Name="consumption_Moodofconsum" Member="Moodofconsum" ThisKey="consumptionID" OtherKey="consumptionID" Type="Moodofconsum" />
+      <Association Name="consumType_consumption" Member="consumType" ThisKey="consumTypeID" OtherKey="consumTypeID" Type="consumType" IsForeignKey="true" />
+      <Association Name="Usergroup_consumption" Member="Usergroup" ThisKey="UsergroupID" OtherKey="UsergroupID" Type="Usergroup" IsForeignKey="true" />
+      <Association Name="YearMonth_consumption" Member="YearMonth" ThisKey="YearMonthID" OtherKey="YearMonthID" Type="YearMonth" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.consumType" Member="consumType">
+    <Type Name="consumType">
+      <Column Name="consumTypeID" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="consumTypename" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="logdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="remark" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="parentID" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="consumType_consumption" Member="consumption" ThisKey="consumTypeID" OtherKey="consumTypeID" Type="consumption" />
+    </Type>
+  </Table>
+  <Table Name="dbo.finan" Member="finan">
+    <Type Name="finan">
+      <Column Name="finanID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="YearMonthID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UsergroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rLovefund" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="rtotalsaveMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="rsaveMoney1" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="rsaveMoney2" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="rsaveMoney3" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="rsaveMoney4" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="diffTotalMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="diffLovefund" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="diffsaveMoney1" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="diffsaveMoney2" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="diffsaveMoney3" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="diffsaveMoney4" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="incomeMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="remark" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="logdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="consummoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="finanYear" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="finanMonth" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="finanDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="userCompanyIDs" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Association Name="Usergroup_finan" Member="Usergroup" ThisKey="UsergroupID" OtherKey="UsergroupID" Type="Usergroup" IsForeignKey="true" />
+      <Association Name="YearMonth_finan" Member="YearMonth" ThisKey="YearMonthID" OtherKey="YearMonthID" Type="YearMonth" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.finanplan" Member="finanplan">
+    <Type Name="finanplan">
+      <Column Name="finanplanID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="YearMonthID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UsergroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="loveFund" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="totalsaveMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="saveMoney1" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="saveMoney2" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="saveMoney3" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="saveMoney4" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="logdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="finanplanYear" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="finanplanMonth" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="finanplanDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="remark" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="consumplanmoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="incomeMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="userCompanyIDs" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Association Name="Usergroup_finanplan" Member="Usergroup" ThisKey="UsergroupID" OtherKey="UsergroupID" Type="Usergroup" IsForeignKey="true" />
+      <Association Name="YearMonth_finanplan" Member="YearMonth" ThisKey="YearMonthID" OtherKey="YearMonthID" Type="YearMonth" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Moodofconsum" Member="Moodofconsum">
+    <Type Name="Moodofconsum">
+      <Column Name="MoodofconsumID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="consumptionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Moodcontent" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Moodtitle" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="logdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="lastdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="consumption_Moodofconsum" Member="consumption" ThisKey="consumptionID" OtherKey="consumptionID" Type="consumption" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Province" Member="Province">
+    <Type Name="Province">
+      <Column Name="ProvinceID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProvinceName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="MapFile" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Pingyin" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="ProvinceCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Province_City" Member="City" ThisKey="ProvinceID" OtherKey="ProvinceID" Type="City" />
+      <Association Name="Province_Company" Member="Company" ThisKey="ProvinceID" OtherKey="ProvinceID" Type="Company" />
+      <Association Name="Province_user" Member="user" ThisKey="ProvinceID" OtherKey="ProvinceID" Type="user" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Saraly" Member="Saraly">
+    <Type Name="Saraly">
+      <Column Name="SaralyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userCompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="YearMonthID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Monthsaraly" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Yearsaraly" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="saralyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="logdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TotalMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="baseMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="jixiaoMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="butieMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="kouchuMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="jiabanFei" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="qitaMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="userFund" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="userShebao" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Pretaxsaraly" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="usertax" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="RealMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="comFund" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="comShebao" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="remark" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Association Name="YearMonth_Saraly" Member="YearMonth" ThisKey="YearMonthID" OtherKey="YearMonthID" Type="YearMonth" IsForeignKey="true" />
+      <Association Name="UserCompany_Saraly" Member="UserCompany" ThisKey="userCompanyID" OtherKey="userCompanyID" Type="UserCompany" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SmallArea" Member="SmallArea">
+    <Type Name="SmallArea">
+      <Column Name="SmallAreaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SmallAreaName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="SortID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityZoneID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RegionXY" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Association Name="SmallArea_City" Member="City" ThisKey="SmallAreaID" OtherKey="SmallAreaID" Type="City" />
+      <Association Name="SmallArea_Company" Member="Company" ThisKey="SmallAreaID" OtherKey="SmallAreaID" Type="Company" />
+      <Association Name="SmallArea_user" Member="user" ThisKey="SmallAreaID" OtherKey="SmallAreaID" Type="user" />
+      <Association Name="CityZone_SmallArea" Member="CityZone" ThisKey="CityZoneID" OtherKey="CityZoneID" Type="CityZone" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.summary" Member="summary">
+    <Type Name="summary">
+      <Column Name="summaryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UsergroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="YearMonthID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="titleSum" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="contentSum" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="logdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="keyword1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="keyword2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="keyword3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="userCompanyIDs" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Association Name="Usergroup_summary" Member="Usergroup" ThisKey="UsergroupID" OtherKey="UsergroupID" Type="Usergroup" IsForeignKey="true" />
+      <Association Name="YearMonth_summary" Member="YearMonth" ThisKey="YearMonthID" OtherKey="YearMonthID" Type="YearMonth" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usergroup" Member="Usergroup">
+    <Type Name="Usergroup">
+      <Column Name="UsergroupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="groupName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="logdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="userNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="remark" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="createDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="groupDecribe" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Association Name="Usergroup_consumption" Member="consumption" ThisKey="UsergroupID" OtherKey="UsergroupID" Type="consumption" />
+      <Association Name="Usergroup_finan" Member="finan" ThisKey="UsergroupID" OtherKey="UsergroupID" Type="finan" />
+      <Association Name="Usergroup_finanplan" Member="finanplan" ThisKey="UsergroupID" OtherKey="UsergroupID" Type="finanplan" />
+      <Association Name="Usergroup_summary" Member="summary" ThisKey="UsergroupID" OtherKey="UsergroupID" Type="summary" />
+      <Association Name="Usergroup_user" Member="user" ThisKey="UsergroupID" OtherKey="UsergroupID" Type="user" />
+    </Type>
+  </Table>
+  <Table Name="dbo.YearMonth" Member="YearMonth">
+    <Type Name="YearMonth">
+      <Column Name="YearMonthID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Yearsign" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Monthsign" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Yearmonthvalue" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="YearMonth_consumption" Member="consumption" ThisKey="YearMonthID" OtherKey="YearMonthID" Type="consumption" />
+      <Association Name="YearMonth_finan" Member="finan" ThisKey="YearMonthID" OtherKey="YearMonthID" Type="finan" />
+      <Association Name="YearMonth_finanplan" Member="finanplan" ThisKey="YearMonthID" OtherKey="YearMonthID" Type="finanplan" />
+      <Association Name="YearMonth_Saraly" Member="Saraly" ThisKey="YearMonthID" OtherKey="YearMonthID" Type="Saraly" />
+      <Association Name="YearMonth_summary" Member="summary" ThisKey="YearMonthID" OtherKey="YearMonthID" Type="summary" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[user]" Member="user">
+    <Type Name="user">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UsergroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="TrueName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="NickName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="UserPwd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LogDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastActive" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="UserMobile" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Usersex" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProvinceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityZoneID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SmallAreaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="BornDay" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="BornYear" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="BornMonth" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="BprthDay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Guid" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="isActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HeadPic" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="UserQQ" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Weibo" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Weixin" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Logtime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserTel" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="user_UserCompany" Member="UserCompany" ThisKey="UserID" OtherKey="UserID" Type="UserCompany" />
+      <Association Name="City_user" Member="City" ThisKey="CityID" OtherKey="CityID" Type="City" IsForeignKey="true" />
+      <Association Name="CityZone_user" Member="CityZone" ThisKey="CityZoneID" OtherKey="CityZoneID" Type="CityZone" IsForeignKey="true" />
+      <Association Name="Province_user" Member="Province" ThisKey="ProvinceID" OtherKey="ProvinceID" Type="Province" IsForeignKey="true" />
+      <Association Name="SmallArea_user" Member="SmallArea" ThisKey="SmallAreaID" OtherKey="SmallAreaID" Type="SmallArea" IsForeignKey="true" />
+      <Association Name="Usergroup_user" Member="Usergroup" ThisKey="UsergroupID" OtherKey="UsergroupID" Type="Usergroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserCompany" Member="UserCompany">
+    <Type Name="UserCompany">
+      <Column Name="userCompanyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="station" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="joinDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="logDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="remark" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="leaveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="iscurrent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="UserCompany_Saraly" Member="Saraly" ThisKey="userCompanyID" OtherKey="userCompanyID" Type="Saraly" />
+      <Association Name="Company_UserCompany" Member="Company" ThisKey="CompanyID" OtherKey="CompanyID" Type="Company" IsForeignKey="true" />
+      <Association Name="user_UserCompany" Member="user" ThisKey="UserID" OtherKey="UserID" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

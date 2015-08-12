@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.375, 29.5" name="YalunwangData">
+  <DataContextMoniker Name="/YalunwangDataDataContext" />
+  <nestedChildShapes>
+    <classShape Id="7d2ab536-e2e2-48bf-b444-0650b3ad311e" absoluteBounds="0.875, 0.5, 2, 2.5266442871093751">
+      <DataClassMoniker Name="/YalunwangDataDataContext/City" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b5b9e9fb-ee82-48b0-a06e-5b7c698f1a9a" absoluteBounds="0.89000000000000012, 0.96, 1.9700000000000002, 1.966644287109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="35ce4eba-addd-456b-95d2-c15d8b683432" absoluteBounds="0.5, 2.125, 2, 2.1446048990885416">
+      <DataClassMoniker Name="/YalunwangDataDataContext/CityZone" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ec345708-540b-43de-b081-471a9e2b0956" absoluteBounds="0.51500000000000012, 2.585, 1.9700000000000002, 1.5846048990885415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(0.875 : 1.76332214355469); (0.25 : 1.76332214355469); (0.25 : 3.19730244954427); (0.5 : 3.19730244954427)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/YalunwangDataDataContext/City/City_CityZone" />
+      <nodes>
+        <classShapeMoniker Id="7d2ab536-e2e2-48bf-b444-0650b3ad311e" />
+        <classShapeMoniker Id="35ce4eba-addd-456b-95d2-c15d8b683432" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="b6faf890-35f4-49fc-9f12-0ef25f26e6b2" absoluteBounds="4.375, 1.625, 2, 2.9086836751302081">
+      <DataClassMoniker Name="/YalunwangDataDataContext/Company" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5e691ed4-74f8-4d52-b6be-201477173dd7" absoluteBounds="4.39, 2.085, 1.9700000000000002, 2.348683675130208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.875 : 2.58034505208333); (4.375 : 2.58034505208333)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/City/City_Company" />
+      <nodes>
+        <classShapeMoniker Id="7d2ab536-e2e2-48bf-b444-0650b3ad311e" />
+        <classShapeMoniker Id="b6faf890-35f4-49fc-9f12-0ef25f26e6b2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 3.80910736083984); (3.38541466666667 : 3.80910736083984 : JumpStart); (3.55208133333333 : 3.80910736083984 : JumpEnd); (3.66666666666667 : 3.80910736083984 : JumpStart); (3.83333333333333 : 3.80910736083984 : JumpEnd); (4.375 : 3.80910736083984)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/CityZone/CityZone_Company" />
+      <nodes>
+        <classShapeMoniker Id="35ce4eba-addd-456b-95d2-c15d8b683432" />
+        <classShapeMoniker Id="b6faf890-35f4-49fc-9f12-0ef25f26e6b2" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="b72c8496-f713-436d-b4d2-51830ad4fb8d" absoluteBounds="2.25, 0.5, 2, 1.5715458170572916">
+      <DataClassMoniker Name="/YalunwangDataDataContext/CompanyType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="afc02b7e-f39f-4f04-b22d-804265dc60f3" absoluteBounds="2.265, 0.96, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.25 : 1.84827290852865); (4.375 : 1.84827290852865)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/CompanyType/CompanyType_Company" />
+      <nodes>
+        <classShapeMoniker Id="b72c8496-f713-436d-b4d2-51830ad4fb8d" />
+        <classShapeMoniker Id="b6faf890-35f4-49fc-9f12-0ef25f26e6b2" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="a13c3f83-6795-4f3c-b57f-275efb012e9a" absoluteBounds="7.875, 1.875, 2, 2.9086836751302081">
+      <DataClassMoniker Name="/YalunwangDataDataContext/consumption" />
+      <nestedChildShapes>
+        <elementListCompartment Id="78e558ab-cc6a-45c0-880e-5afe29cfce06" absoluteBounds="7.89, 2.335, 1.9700000000000002, 2.348683675130208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7d46ebeb-8956-4e51-83b2-562a8b58b5ac" absoluteBounds="12.125, 1.25, 2, 1.7625655110677081">
+      <DataClassMoniker Name="/YalunwangDataDataContext/consumType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ecd2c3d1-f81b-46ef-af3c-0811bea7da8a" absoluteBounds="12.14, 1.71, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(12.125 : 2.44378275553385); (11.9583333333333 : 2.44378275553385 : JumpStart); (11.7916666666667 : 2.44378275553385 : JumpEnd); (10.1183333333333 : 2.44378275553385 : JumpStart); (9.95166666666667 : 2.44378275553385 : JumpEnd); (9.875 : 2.44378275553385)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/consumType/consumType_consumption" />
+      <nodes>
+        <classShapeMoniker Id="7d46ebeb-8956-4e51-83b2-562a8b58b5ac" />
+        <classShapeMoniker Id="a13c3f83-6795-4f3c-b57f-275efb012e9a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="eb8ed812-7180-44dd-b356-5cd288894c20" absoluteBounds="6.75, 2.875, 2, 5.2009200032552076">
+      <DataClassMoniker Name="/YalunwangDataDataContext/finan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1fb21cbc-a090-4375-a048-5c99756921c4" absoluteBounds="6.765, 3.335, 1.9700000000000002, 4.640920003255208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bbaa645a-80fb-4bbc-a26d-877715d88bcc" absoluteBounds="5.125, 5.125, 2, 4.0548018391927076">
+      <DataClassMoniker Name="/YalunwangDataDataContext/finanplan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6d680f82-1bda-4072-8efa-99be6f46009a" absoluteBounds="5.14, 5.585, 1.9700000000000002, 3.494801839192708" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0ba00471-ed80-405a-8938-88313bc67356" absoluteBounds="3.25, 6, 2, 1.9535852050781251">
+      <DataClassMoniker Name="/YalunwangDataDataContext/Moodofconsum" />
+      <nestedChildShapes>
+        <elementListCompartment Id="277f5b68-e48b-4e89-ba52-896b96761319" absoluteBounds="3.265, 6.46, 1.9700000000000002, 1.393585205078125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.99999875 : 4.78368367513021); (8.99999875 : 4.93728367513021); (8.8524 : 4.93728367513021); (8.8524 : 9.28220183919271); (8.83333333333333 : 9.28220183919271 : JumpStart); (8.66666666666667 : 9.28220183919271 : JumpEnd); (8.05208283333333 : 9.28220183919271 : JumpStart); (7.88541616666667 : 9.28220183919271 : JumpEnd); (6.58333333333333 : 9.28220183919271 : JumpStart); (6.41666666666667 : 9.28220183919271 : JumpEnd); (3.0964 : 9.28220183919271); (3.0964 : 6.97679260253906); (3.25 : 6.97679260253906)]" fixedFrom="Algorithm" fixedTo="NotFixed">
+      <AssociationMoniker Name="/YalunwangDataDataContext/consumption/consumption_Moodofconsum" />
+      <nodes>
+        <classShapeMoniker Id="a13c3f83-6795-4f3c-b57f-275efb012e9a" />
+        <classShapeMoniker Id="0ba00471-ed80-405a-8938-88313bc67356" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="adeb46c2-d491-4869-9026-b040745ef0ec" absoluteBounds="2.625, 4.5, 2, 1.9535852050781251">
+      <DataClassMoniker Name="/YalunwangDataDataContext/Province" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b20382cd-0775-4b69-8c48-a38ea35d0065" absoluteBounds="2.64, 4.96, 1.9700000000000002, 1.393585205078125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.625 : 5.47679260253906); (2.11458583333333 : 5.47679260253906 : JumpStart); (1.94791916666667 : 5.47679260253906 : JumpEnd); (1.58333333333333 : 5.47679260253906 : JumpStart); (1.41666666666667 : 5.47679260253906 : JumpEnd); (0.09 : 5.47679260253906); (0.09 : 0.26); (1.26041466666667 : 0.259999999999999 : JumpStart); (1.42708133333333 : 0.26 : JumpEnd); (1.875 : 0.26); (1.875 : 0.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/Province/Province_City" />
+      <nodes>
+        <classShapeMoniker Id="adeb46c2-d491-4869-9026-b040745ef0ec" />
+        <classShapeMoniker Id="7d2ab536-e2e2-48bf-b444-0650b3ad311e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.468748 : 4.5); (3.468748 : 3.12985982259115); (4.375 : 3.12985982259115)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/Province/Province_Company" />
+      <nodes>
+        <classShapeMoniker Id="adeb46c2-d491-4869-9026-b040745ef0ec" />
+        <classShapeMoniker Id="b6faf890-35f4-49fc-9f12-0ef25f26e6b2" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="cef2ba5e-dadf-4a48-8b72-9664194e5720" absoluteBounds="4.125, 9.625, 2, 5.0099003092447907">
+      <DataClassMoniker Name="/YalunwangDataDataContext/Saraly" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3759ea7f-8ab8-4aa1-a544-180654b59d61" absoluteBounds="4.14, 10.085, 1.9700000000000002, 4.4499003092447911" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a3b9e02d-de5c-4194-8353-d29cf7d18a0d" absoluteBounds="6.875, 13.75, 2, 1.7625655110677081">
+      <DataClassMoniker Name="/YalunwangDataDataContext/SmallArea" />
+      <nestedChildShapes>
+        <elementListCompartment Id="41275280-e587-44da-8f26-f1c62af1046c" absoluteBounds="6.89, 14.21, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.42187525 : 13.75); (7.42187525 : 9.465); (6.58333333333333 : 9.465 : JumpStart); (6.29166666666667 : 9.465 : JumpEnd); (2.94403333333333 : 9.465 : JumpStart); (2.77736666666667 : 9.465 : JumpEnd); (2.11458583333333 : 9.465 : JumpStart); (1.94791916666667 : 9.465 : JumpEnd); (1.58333333333333 : 9.465 : JumpStart); (1.41666666666667 : 9.465 : JumpEnd); (-0.035 : 9.465); (-0.035 : 0.00999999999999995); (2.406252 : 0.00999999999999995); (2.406252 : 0.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/SmallArea/SmallArea_City" />
+      <nodes>
+        <classShapeMoniker Id="a3b9e02d-de5c-4194-8353-d29cf7d18a0d" />
+        <classShapeMoniker Id="7d2ab536-e2e2-48bf-b444-0650b3ad311e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.875 : 14.6312827555339); (6.70833333333333 : 14.6312827555339 : JumpStart); (6.41666666666667 : 14.6312827555339 : JumpEnd); (6.375 : 14.6312827555339); (6.375 : 9.375); (3 : 9.375); (3 : 4.90868367513021); (3.75 : 4.90868367513021); (3.75 : 3.22360982259115); (4.375 : 3.22360982259115)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/YalunwangDataDataContext/SmallArea/SmallArea_Company" />
+      <nodes>
+        <classShapeMoniker Id="a3b9e02d-de5c-4194-8353-d29cf7d18a0d" />
+        <classShapeMoniker Id="b6faf890-35f4-49fc-9f12-0ef25f26e6b2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.5 : 4.26960489908854); (1.5 : 14.6974003092448); (1.94791916666667 : 14.6974003092448 : JumpStart); (2.11458583333333 : 14.6974003092448 : JumpEnd); (2.77736666666667 : 14.6974003092448 : JumpStart); (2.94403333333333 : 14.6974003092448 : JumpEnd); (6.41666666666667 : 14.6974003092448 : JumpStart); (6.70833333333333 : 14.6974003092448 : JumpEnd); (6.78125 : 14.6974003092448); (6.78125 : 14.6312827555339); (6.875 : 14.6312827555339)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/CityZone/CityZone_SmallArea" />
+      <nodes>
+        <classShapeMoniker Id="35ce4eba-addd-456b-95d2-c15d8b683432" />
+        <classShapeMoniker Id="a3b9e02d-de5c-4194-8353-d29cf7d18a0d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="78da3220-45e3-4860-b407-973435d76dc5" absoluteBounds="3.75, 14.75, 2, 2.7176639811197916">
+      <DataClassMoniker Name="/YalunwangDataDataContext/summary" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0c2ec246-b3f5-4a8f-88cd-094c1693b833" absoluteBounds="3.765, 15.21, 1.9700000000000002, 2.1576639811197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="83e0492f-a203-4059-afc8-731fb249d803" absoluteBounds="9, 11.125, 2, 2.1446048990885416">
+      <DataClassMoniker Name="/YalunwangDataDataContext/Usergroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3cfa5506-38f6-4dbe-a025-7832613681da" absoluteBounds="9.015, 11.585, 1.9700000000000002, 1.5846048990885415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10.4332667119323 : 11.125); (10.4332667119323 : 3.64498571533203); (10.1183333333333 : 3.64498571533203 : JumpStart); (9.95166666666667 : 3.64498571533203 : JumpEnd); (9.875 : 3.64498571533203)]" fixedFrom="Caller" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/Usergroup/Usergroup_consumption" />
+      <nodes>
+        <classShapeMoniker Id="83e0492f-a203-4059-afc8-731fb249d803" />
+        <classShapeMoniker Id="a13c3f83-6795-4f3c-b57f-275efb012e9a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.7478858559661 : 11.125); (10.7478858559661 : 6.61730183919271); (10.5166000452656 : 6.61730183919271 : JumpStart); (10.349933378599 : 6.61730183919271 : JumpEnd); (10.1183333333333 : 6.61730183919271 : JumpStart); (9.95166666666667 : 6.61730183919271 : JumpEnd); (9.33333333333333 : 6.61730183919271 : JumpStart); (9.16666666666667 : 6.61730183919271 : JumpEnd); (8.93573333333333 : 6.61730183919271 : JumpStart); (8.76906666666667 : 6.61730183919271 : JumpEnd); (8.75 : 6.61730183919271)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/Usergroup/Usergroup_finan" />
+      <nodes>
+        <classShapeMoniker Id="83e0492f-a203-4059-afc8-731fb249d803" />
+        <classShapeMoniker Id="eb8ed812-7180-44dd-b356-5cd288894c20" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.7031231875 : 11.125); (9.7031231875 : 8.75286092122396); (8.93573333333333 : 8.75286092122396 : JumpStart); (8.66666666666667 : 8.75286092122396 : JumpEnd); (8.05208283333333 : 8.75286092122396 : JumpStart); (7.88541616666667 : 8.75286092122396 : JumpEnd); (7.125 : 8.75286092122396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/Usergroup/Usergroup_finanplan" />
+      <nodes>
+        <classShapeMoniker Id="83e0492f-a203-4059-afc8-731fb249d803" />
+        <classShapeMoniker Id="bbaa645a-80fb-4bbc-a26d-877715d88bcc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.78125 : 13.2696048990885); (9.78125 : 16.4803122965495); (9.36833333333333 : 16.4803122965495 : JumpStart); (9.04166666666667 : 16.4803122965495 : JumpEnd); (7.48958333333333 : 16.4803122965495 : JumpStart); (7.32291666666667 : 16.4803122965495 : JumpEnd); (6.70833333333333 : 16.4803122965495 : JumpStart); (6.41666666666667 : 16.4803122965495 : JumpEnd); (6.05208333333333 : 16.4803122965495 : JumpStart); (5.88541666666667 : 16.4803122965495 : JumpEnd); (5.75 : 16.4803122965495)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/Usergroup/Usergroup_summary" />
+      <nodes>
+        <classShapeMoniker Id="83e0492f-a203-4059-afc8-731fb249d803" />
+        <classShapeMoniker Id="78da3220-45e3-4860-b407-973435d76dc5" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ab093d31-592f-4fb2-8bb4-611d5a437cff" absoluteBounds="10.625, 16.875, 2, 1.5715458170572916">
+      <DataClassMoniker Name="/YalunwangDataDataContext/YearMonth" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c7ec67b5-bfdf-48de-a3fd-8e002fac3aff" absoluteBounds="10.64, 17.335, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10.625 : 17.5370920437826); (10.2064583333333 : 17.5370920437826 : JumpStart); (10.0397916666667 : 17.5370920437826 : JumpEnd); (9.36833333333333 : 17.5370920437826 : JumpStart); (9.20166666666667 : 17.5370920437826 : JumpEnd); (9.125 : 17.5370920437826); (9.125 : 13.5196048990885); (8.75 : 13.5196048990885); (8.75 : 8.32592000325521); (8.76906666666667 : 8.32592000325521 : JumpStart); (8.93573333333333 : 8.32592000325521 : JumpEnd); (9.25 : 8.32592000325521); (9.25 : 5.15868367513021); (9.468751375 : 5.15868367513021); (9.468751375 : 4.78368367513021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/YearMonth/YearMonth_consumption" />
+      <nodes>
+        <classShapeMoniker Id="ab093d31-592f-4fb2-8bb4-611d5a437cff" />
+        <classShapeMoniker Id="a13c3f83-6795-4f3c-b57f-275efb012e9a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.625 : 17.1747940218913); (10.2064583333333 : 17.1747940218913 : JumpStart); (10.0397916666667 : 17.1747940218913 : JumpEnd); (9.36833333333333 : 17.1747940218913 : JumpStart); (9.04166666666667 : 17.1747940218913 : JumpEnd); (7.48958333333333 : 17.1747940218913 : JumpStart); (7.32291666666667 : 17.1747940218913 : JumpEnd); (6.625 : 17.1747940218913); (6.625 : 9.67980183919271); (7.33854191666667 : 9.67980183919271 : JumpStart); (7.50520858333333 : 9.67980183919271 : JumpEnd); (7.9687495 : 9.67980183919271); (7.9687495 : 8.07592000325521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/YearMonth/YearMonth_finan" />
+      <nodes>
+        <classShapeMoniker Id="ab093d31-592f-4fb2-8bb4-611d5a437cff" />
+        <classShapeMoniker Id="eb8ed812-7180-44dd-b356-5cd288894c20" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.625 : 17.8993900656738); (10.2064583333333 : 17.8993900656738 : JumpStart); (10.0397916666667 : 17.8993900656738 : JumpEnd); (9.36833333333333 : 17.8993900656738 : JumpStart); (9.20166666666667 : 17.8993900656738 : JumpEnd); (7.48958333333333 : 17.8993900656738 : JumpStart); (7.32291666666667 : 17.8993900656738 : JumpEnd); (6.5 : 17.8993900656738); (6.5 : 9.17980183919271)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/YearMonth/YearMonth_finanplan" />
+      <nodes>
+        <classShapeMoniker Id="ab093d31-592f-4fb2-8bb4-611d5a437cff" />
+        <classShapeMoniker Id="bbaa645a-80fb-4bbc-a26d-877715d88bcc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.625 : 18.2616880875651); (10.2064583333333 : 18.2616880875651 : JumpStart); (10.0397916666667 : 18.2616880875651 : JumpEnd); (9.36833333333333 : 18.2616880875651 : JumpStart); (9.20166666666667 : 18.2616880875651 : JumpEnd); (7.48958333333333 : 18.2616880875651 : JumpStart); (7.32291666666667 : 18.2616880875651 : JumpEnd); (5.96875 : 18.2616880875651); (5.96875 : 14.6349003092448)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/YearMonth/YearMonth_Saraly" />
+      <nodes>
+        <classShapeMoniker Id="ab093d31-592f-4fb2-8bb4-611d5a437cff" />
+        <classShapeMoniker Id="cef2ba5e-dadf-4a48-8b72-9664194e5720" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.625 : 16.9623970109456); (10.2064583333333 : 16.9623970109456 : JumpStart); (10.0397916666667 : 16.9623970109456 : JumpEnd); (9.36833333333333 : 16.9623970109456 : JumpStart); (9.04166666666667 : 16.9623970109456 : JumpEnd); (7.48958333333333 : 16.9623970109456 : JumpStart); (7.32291666666667 : 16.9623970109456 : JumpEnd); (6.70833333333333 : 16.9623970109456 : JumpStart); (6.41666666666667 : 16.9623970109456 : JumpEnd); (6.05208333333333 : 16.9623970109456 : JumpStart); (5.88541666666667 : 16.9623970109456 : JumpEnd); (5.75 : 16.9623970109456)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/YearMonth/YearMonth_summary" />
+      <nodes>
+        <classShapeMoniker Id="ab093d31-592f-4fb2-8bb4-611d5a437cff" />
+        <classShapeMoniker Id="78da3220-45e3-4860-b407-973435d76dc5" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="1caac0a5-e953-4b7d-9f3d-9a64ec45c900" absoluteBounds="9.5, 22.75, 2, 6.5380578613281246">
+      <DataClassMoniker Name="/YalunwangDataDataContext/user" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c83a8c1c-d8e8-42a8-9f45-43e34dad101f" absoluteBounds="9.515, 23.21, 1.9700000000000002, 5.978057861328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.343748 : 0.5); (1.343748 : 0.135); (2.32291866666667 : 0.134999999999999 : JumpStart); (2.48958533333333 : 0.135 : JumpEnd); (10.035 : 0.135); (10.035 : 9.09); (9.78645652083333 : 9.09 : JumpStart); (9.61978985416667 : 9.09 : JumpEnd); (8.84 : 9.09); (8.84 : 13.59); (9.285 : 13.59); (9.285 : 26.1312720730896); (9.5 : 26.1312720730896)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/City/City_user" />
+      <nodes>
+        <classShapeMoniker Id="7d2ab536-e2e2-48bf-b444-0650b3ad311e" />
+        <classShapeMoniker Id="1caac0a5-e953-4b7d-9f3d-9a64ec45c900" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.0312525 : 4.26960489908854); (2.0312525 : 25.0581751436768); (7.32291666666667 : 25.0581751436768 : JumpStart); (7.48958333333333 : 25.0581751436768 : JumpEnd); (9.20166666666667 : 25.0581751436768 : JumpStart); (9.36833333333333 : 25.0581751436768 : JumpEnd); (9.5 : 25.0581751436768)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/CityZone/CityZone_user" />
+      <nodes>
+        <classShapeMoniker Id="35ce4eba-addd-456b-95d2-c15d8b683432" />
+        <classShapeMoniker Id="1caac0a5-e953-4b7d-9f3d-9a64ec45c900" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.8607 : 6.45358520507813); (2.8607 : 23.8728350718384); (7.32291666666667 : 23.8728350718384 : JumpStart); (7.48958333333333 : 23.8728350718384 : JumpEnd); (9.20166666666667 : 23.8728350718384 : JumpStart); (9.36833333333333 : 23.8728350718384 : JumpEnd); (9.5 : 23.8728350718384)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/Province/Province_user" />
+      <nodes>
+        <classShapeMoniker Id="adeb46c2-d491-4869-9026-b040745ef0ec" />
+        <classShapeMoniker Id="1caac0a5-e953-4b7d-9f3d-9a64ec45c900" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.40625 : 15.5125655110677); (7.40625 : 27.2043690025024); (9.5 : 27.2043690025024)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/SmallArea/SmallArea_user" />
+      <nodes>
+        <classShapeMoniker Id="a3b9e02d-de5c-4194-8353-d29cf7d18a0d" />
+        <classShapeMoniker Id="1caac0a5-e953-4b7d-9f3d-9a64ec45c900" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.123125 : 13.2696048990885); (10.123125 : 22.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/Usergroup/Usergroup_user" />
+      <nodes>
+        <classShapeMoniker Id="83e0492f-a203-4059-afc8-731fb249d803" />
+        <classShapeMoniker Id="1caac0a5-e953-4b7d-9f3d-9a64ec45c900" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="95ec3b68-ace1-45ca-9bc7-57fc50addff3" absoluteBounds="11, 14.875, 2, 2.5266442871093751">
+      <DataClassMoniker Name="/YalunwangDataDataContext/UserCompany" />
+      <nestedChildShapes>
+        <elementListCompartment Id="64d7a165-b24a-40be-870f-a7a1409efdd7" absoluteBounds="11.015, 15.335, 1.9700000000000002, 1.966644287109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(12.59375 : 14.875); (12.59375 : 13.4258548990885); (11.8489563333333 : 13.4258548990885 : JumpStart); (11.6822896666667 : 13.4258548990885 : JumpEnd); (10.2064583333333 : 13.4258548990885 : JumpStart); (10.0397916666667 : 13.4258548990885 : JumpEnd); (9.86458333333333 : 13.4258548990885 : JumpStart); (9.69791666666667 : 13.4258548990885 : JumpEnd); (8.92333333333333 : 13.4258548990885 : JumpStart); (8.66666666666667 : 13.4258548990885 : JumpEnd); (7.50520858333333 : 13.4258548990885 : JumpStart); (7.33854191666667 : 13.4258548990885 : JumpEnd); (6.70833333333333 : 13.4258548990885 : JumpStart); (6.29166666666667 : 13.4258548990885 : JumpEnd); (6.125 : 13.4258548990885)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/UserCompany/UserCompany_Saraly" />
+      <nodes>
+        <classShapeMoniker Id="95ec3b68-ace1-45ca-9bc7-57fc50addff3" />
+        <classShapeMoniker Id="cef2ba5e-dadf-4a48-8b72-9664194e5720" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.375 : 1.625); (5.375 : 1.25); (9.95166666666667 : 1.25 : JumpStart); (10.1183333333333 : 1.25 : JumpEnd); (11.875 : 1.25); (11.875 : 3.26256551106771); (11.765623 : 3.26256551106771); (11.765623 : 14.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/Company/Company_UserCompany" />
+      <nodes>
+        <classShapeMoniker Id="b6faf890-35f4-49fc-9f12-0ef25f26e6b2" />
+        <classShapeMoniker Id="95ec3b68-ace1-45ca-9bc7-57fc50addff3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.5 : 26.0190289306641); (12.84375 : 26.0190289306641); (12.84375 : 17.4016442871094)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/YalunwangDataDataContext/user/user_UserCompany" />
+      <nodes>
+        <classShapeMoniker Id="1caac0a5-e953-4b7d-9f3d-9a64ec45c900" />
+        <classShapeMoniker Id="95ec3b68-ace1-45ca-9bc7-57fc50addff3" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

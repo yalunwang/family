@@ -1,0 +1,2244 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZKEShop.SystemFramework</name>
+    </assembly>
+    <members>
+        <member name="T:ZKEShop.SystemFramework.ApplicationAssert">
+            <summary>
+                A class to help with error checking and automatic logging
+                of asserts and conditional checks. 
+                <remarks>
+                    This class works with displays system assert dialogs 
+                    as well as writing to the application log with the 
+                    ApplicationLog class. There is no instance data associated 
+                    with this class.
+                </remarks>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationAssert.Check(System.Boolean,System.String,System.Int32)">
+            <summary>
+                Check the given condition and show an assert dialog when the
+                desktop is interactive. 
+                <remarks>
+                    Log the assertion at a warning level in case the desktop is not 
+                    interactive. The text will always contain full stack trace 
+                    information and will show the location of the error condition if 
+                    the source code is available.
+                </remarks>
+                <param name="condition">An expression to be tested for True</param>
+                <param name="errorText">The message to display</param>
+                <param name="lineNumber">
+                    The line of the current error in the function. See
+                    GenerateStackTrace for more information.
+                </param>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationAssert.CheckCondition(System.Boolean,System.String,System.Int32)">
+            <summary>
+                Verify that a required condition holds. 
+                <remarks>
+                    Show an assert dialog in a DEBUG build before throwing an 
+                    ApplicationException. It is assumed that the exception will be 
+                    handled or logged, so this does not log a warning for the assertion 
+                    like the Check function, which does not actually throw.
+                </remarks>
+                <param name="condition">An expression to be tested for True</param>
+                <param name="errorText">The message to display</param>
+                <param name="lineNumber">
+                    The line of the current error in the function. See 
+                    GenerateStackTrace for more information.
+                </param>                        
+                <exception class="System.ApplicationException">
+                    The checked condition failed.    
+                </exception>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationAssert.GenerateStackTrace(System.Int32,System.String@)">
+            <summary>
+                Generate a stack trace to display/log with the assertion text.
+                <remarks>
+                    The trace information includes file and line number information
+                    if its available, as well as a copy of the line of text if
+                    the source code is available. This function is only included in
+                    DEBUG builds of the application.
+                </remarks>
+                <param name="lineNumber">
+                    The line of the current error in the function. This                  
+                    value should be retrieved by call Application.LineNumber             
+                    in the parameter list of any of the Check* functions. If         
+                    LineNumber is not provided,then the next executable line is used.
+                </param>
+                <param name="currentTrace">Returns the generated stack trace.</param>
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.ApplicationAssert.LineNumber">
+            <value>Property LineNumber is used to get the current line number in the calling function.</value>
+            <remarks>
+                This should be called in a parameter list to get accurate 
+                information about the line number before the Check* functions 
+                are called. If we wait until the Check* functions themselves 
+                to retrieve this information, then the stack trace indicates 
+                the next executable line, which is only marginally useful 
+                information. This function is compiled out in debug builds in
+                favor of the LineNumber constant.
+                Returns LineNumber, or 0 on failure.
+            </remarks>
+        </member>
+        <!-- 对于成员“T:ZKEShop.SystemFramework.ApplicationConfiguration”忽略有格式错误的 XML 注释 -->
+        <member name="M:ZKEShop.SystemFramework.ApplicationConfiguration.Create(System.Object,System.Object,System.Xml.XmlNode)">
+            <summary>
+                Called from OnApplicationStart to initialize settings from
+                the Web.Config file(s). 
+                <remarks>
+                    The app domain will restart if settings change, so there is 
+                    no reason to read these values more than once. This funtion
+                    uses the NameValueSectionHandler base class to generate a 
+                    hashtablefrom the XML, which is then used to store the current
+                    settings.  Because all settings are read here, we do not actually 
+                    store the generated hashtable object for later retrieval by
+                    Context.GetConfig. The application should use the accessor
+                    functions directly.
+                </remarks>
+                <param name="parent">An object created by processing a section 
+                    with this name in a Config.Web file in a parent directory.
+                </param>
+                <param name="configContext">The config's context.</param>
+                <param name="section">The section to be read.</param>
+                <retvalue>
+            	    <para>
+                        A ConfigOutput object: which we leave empty because all settings
+                        are stored at this point.
+            	    </para>
+            	    <para>
+                        null:  if there was an error.
+            	    </para>
+                </retvalue>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationConfiguration.ReadSetting(System.Collections.Specialized.NameValueCollection,System.String,System.String)">
+            <summary>
+                String version of ReadSetting.
+                <remarks>
+                    Reads a setting from a hashtable and converts it to the correct
+                    type. One of these functions is provided for each type
+                    expected in the hash table. These are public so that other
+                    classes don't have to duplicate them to read settings from
+                    a hash table.
+                </remarks>
+                <param name="settings">The Hashtable to read from.</param>
+                <param name="key">A key for the value in the Hashtable.</param>
+                <param name="defaultValue">The default value if the item is not found.</param>
+                <retvalue>
+            	    <para>value: from the hash table</para>
+                    <para>
+                        default: if the item is not in the table or cannot be case to the expected type.
+            	    </para>
+                </retvalue>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationConfiguration.ReadSetting(System.Collections.Specialized.NameValueCollection,System.String,System.Boolean)">
+            <summary>
+                Boolean version of ReadSetting.
+                <remarks>
+                    Reads a setting from a hashtable and converts it to the correct
+                    type. One of these functions is provided for each type
+                    expected in the hash table. These are public so that other
+                    classes don't have to duplicate them to read settings from
+                    a hash table.
+                </remarks>
+                <param name="settings">The Hashtable to read from.</param>
+                <param name="key">A key for the value in the Hashtable.</param>
+                <param name="defaultValue">The default value if the item is not found.</param>
+                <retvalue>
+            	    <para>value: from the hash table</para>
+                    <para>
+                        default: if the item is not in the table or cannot be case to the expected type.
+            	    </para>
+                </retvalue>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationConfiguration.ReadSetting(System.Collections.Specialized.NameValueCollection,System.String,System.Int32)">
+            <summary>
+                int version of ReadSetting.
+                <remarks>
+                    Reads a setting from a hashtable and converts it to the correct
+                    type. One of these functions is provided for each type
+                    expected in the hash table. These are public so that other
+                    classes don't have to duplicate them to read settings from
+                    a hash table.
+                </remarks>
+                <param name="settings">The Hashtable to read from.</param>
+                <param name="key">A key for the value in the Hashtable.</param>
+                <param name="defaultValue">The default value if the item is not found.</param>
+                <retvalue>
+            	    <para>value: from the hash table</para>
+                    <para>
+                        default: if the item is not in the table or cannot be case to the expected type.
+            	    </para>
+                </retvalue>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationConfiguration.ReadSetting(System.Collections.Specialized.NameValueCollection,System.String,System.Diagnostics.TraceLevel)">
+            <summary>
+                TraceLevel version of ReadSetting.
+                <remarks>
+                    Reads a setting from a hashtable and converts it to the correct
+                    type. One of these functions is provided for each type
+                    expected in the hash table. These are public so that other
+                    classes don't have to duplicate them to read settings from
+                    a hash table.
+                </remarks>
+                <param name="settings">The Hashtable to read from.</param>
+                <param name="key">A key for the value in the Hashtable.</param>
+                <param name="defaultValue">The default value if the item is not found.</param>
+                <retvalue>
+            	    <para>value: from the hash table</para>
+                    <para>
+                        default: if the item is not in the table or cannot be case to the expected type.
+            	    </para>
+                </retvalue>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationConfiguration.OnApplicationStart(System.String)">
+            <summary>
+                Function to be called by Application_OnStart as described in the
+                class description. Initializes the application root.
+                <param name="myAppPath">The path of the running application.</param>
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.ApplicationConfiguration.ConnectionString">
+            <summary>
+            create by wangpan 2010-08-18
+            应用程序连接字符串
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.ApplicationConfiguration.AppRoot">
+            <value>
+                Property AppRoot is used to get the root path of the application.
+            </value>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.ApplicationConfiguration.TracingEnabled">
+            <value>
+                Property TracingEnabled is used to get the configuration setting, defaulting to False on error.
+            </value>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.ApplicationConfiguration.TracingTraceFile">
+            <value>
+                Property TracingTraceFile is used to get the full path name to the file that contains trace 
+                settings, defaults to ApplicationTrace.txt.
+            </value>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.ApplicationConfiguration.TracingTraceLevel">
+            <value>
+                Property TracingTraceFile is used to get the highest logging level that should be written to 
+                the tracing file, defaults to TraceLevel.Verbose (however, TracingEnabled defaults
+                to False, so you have to turn it on explicitly).
+            </value>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.ApplicationConfiguration.TracingSwitchName">
+            <value>
+              Property TracingSwitchName is used to get the trace switch name, defaults to ApplicationTraceSwitch.
+            </value>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.ApplicationConfiguration.TracingSwitchDescription">
+            <value>
+              Property TracingSwitchDescription is used to get the trace settings file, defaults to 
+                "Application error and tracing information".
+            </value>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.ApplicationConfiguration.EventLogEnabled">
+            <value>
+                Property EventLogEnabled is used to get whether writing to the event log is support, defaults to True.
+                <remarks>Returns true if writing to the event log is enabled, false otherwise</remarks>
+            </value>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.ApplicationConfiguration.EventLogMachineName">
+            <value>
+                Property EventLogMachineName is used to get the machine name to log the event to, defaults to an
+                empty string, indicating the current machine.  A machine name 
+                (without \\), may be empty.
+            </value>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.ApplicationConfiguration.EventLogSourceName">
+            <value>
+                Property EventLogMachineName is used to get the source of the error to be written to the event log, 
+                defaults WebApplication.
+            </value>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.ApplicationConfiguration.EventLogTraceLevel">
+            <value>
+                Property EventLogTraceLevel is used to get the highest logging level that should be written to the event log,
+                defaults to TraceLevel.Error.
+            </value>
+        </member>
+        <member name="T:ZKEShop.SystemFramework.ApplicationLog">
+            <summary>
+                Logging class to provide tracing and logging support. 
+                <remarks>
+                    There are four different logging levels (error, warning, info, trace) 
+                    that produce output to either the system event log or a tracing 
+                    file as specified in the current ApplicationConfiguration settings.
+                </remarks>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationLog.WriteError(System.String)">
+            <summary>
+                Write at the Error level to the event log and/or tracing file.
+                <param name="message">The text to write to the log file or event log.</param>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationLog.WriteWarning(System.String)">
+            <summary>
+                Write at the Warning level to the event log and/or tracing file.
+                <param name="message">The text to write to the log file or event log.</param>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationLog.WriteInfo(System.String)">
+            <summary>
+                Write at the Info level to the event log and/or tracing file.
+                <param name="message">The text to write to the log file or event log.</param>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationLog.WriteTrace(System.String)">
+            <summary>
+                Write at the Verbose level to the event log and/or tracing file.
+                <param name="message">The text to write to the log file or event log.</param>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationLog.FormatException(System.Exception,System.String)">
+            <summary>
+                Write at the Verbose level to the event log and/or tracing file.
+                <param name="ex">The Exception object to format</param>
+                <param name="catchInfo">The string to prepend to the exception information.</param>
+                <retvalue>
+                    <para>A nicely format exception string, including message and StackTrace information.</para>
+                </retvalue>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationLog.WriteLog(System.Diagnostics.TraceLevel,System.String)">
+            <summary>
+                Determine where a string needs to be written based on the
+                configuration settings and the error level.
+                <param name="level">The severity of the information to be logged.</param>
+                <param name="messageText">The string to be logged.</param>
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.ApplicationLog.#cctor">
+            <summary>
+                Constructor for ApplicationLog.  
+                <remarks>Initialize all shared variables based on the ApplicationConfigurationsettings. 
+                    Called when this class is first loaded.
+                </remarks>
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._BrandSmallPicWidth">
+            <summary>
+            品牌小图宽度
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._BrandSmallPicHeight">
+            <summary>
+            品牌小图高度
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._BrandMidPicWidth">
+            <summary>
+            品牌中图宽度
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._BrandMidPicHeight">
+            <summary>
+            品牌中图高度
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._BrandBigPicWidth">
+            <summary>
+            品牌大图宽度
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._BrandBigPicHeight">
+            <summary>
+            品牌中图高度
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig.HeadProductCataID">
+            <summary>
+            全局头部切换样式
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.GlobalConfig._TempShopCartEmpty”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._ProductSKURule">
+            <summary>
+            自动生成SKU的规则定义
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._smallCart">
+            <summary>
+            小购物车模版
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._ProductCodeRule">
+            <summary>
+            商品编码
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._PurchasingCodeRule">
+            <summary>
+            供应编码
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._ProductCataCodeRule">
+            <summary>
+            商品类别编码
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._CustomerCodeRule">
+            <summary>
+            客户编码
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._OrdersCodeRule">
+            <summary>
+            销售订单编码
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._PurchaseOrderCodeRule">
+            <summary>
+            采购订单编码
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._ReturnOrderCodeRule">
+            <summary>
+            采购退货单编码
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._ResheetCodeRule">
+            <summary>
+            退货入库单编码
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._ShipOrderCodeRule">
+            <summary>
+            调拨入库单编码
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._StoreInCodeRule">
+            <summary>
+            入库编码
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._CommonSKURule">
+            <summary>
+            出库编码
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._SingPro">
+            <summary>
+            系统初始化时从数据库读入全局配置
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.GlobalConfig.DicTemplete”忽略有格式错误的 XML 注释 -->
+        <member name="M:ZKEShop.SystemFramework.GlobalConfig.GetTempContent(System.Int32)">
+            <summary>
+            获取一个网页模板的内容
+            </summary>
+            <param name="TempID"></param>
+            <returns></returns>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.GlobalConfig._IsProductCodeAutoCreate">
+            <summary>
+            商品编号是否自动编号  EBS复制
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.OrderPayDay">
+            <summary>
+            订单自动付款给商户的天数
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.ReAmountDay">
+            <summary>
+            退款自动生效的天数
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.ProPictureLength">
+            <summary>
+            产品图片文件大小限制(KB)
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.ResourceDiskPath">
+            <summary>
+            网站资料目录路径
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.WebDiskPath">
+            <summary>
+            网站根目录路径
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.MallSiteDiskPath">
+            <summary>
+            商城网站根目录路径
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.UsePicServ">
+            <summary>
+            是否启用图片服务器
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.PicServDomain">
+            <summary>
+            图片服务器域名
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.ShopName">
+            <summary>
+            网店名称
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.ShopWebUrl">
+            <summary>
+            网店域名
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.HabiName">
+            <summary>
+            网币名称
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.ApplicationLanguage">
+            <summary>
+            当前语言版本
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.ApplicationLanguageJS">
+            <summary>
+            当前语言版本JS
+            </summary>
+        </member>
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.ReturnDays”忽略有格式错误的 XML 注释 -->
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.ExchangeDays">
+            <summary>
+            换货有效天数
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.SmallPicWidth">
+            <summary>
+            商品小图宽度
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.SmallPicHeight">
+            <summary>
+            商品小图高度
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.MidPicWidth">
+            <summary>
+            商品中图宽度
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.MidPicHeight">
+            <summary>
+            商品中图高度
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.LargePicWidth">
+            <summary>
+            商品大图宽度
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.LargePicHeight">
+            <summary>
+            商品大图高度
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.DescInOrder">
+            <summary>
+            订单中的宣传语
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsOLOrderNeedCheck">
+            <summary>
+            必须核对订单资料后才能发货
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsShowOOS">
+            <summary>
+            是否显示缺货
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.NoStoreNoOrder">
+            <summary>
+            缺货不能下单
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsStorageOn">
+            <summary>
+            是否启用仓储系统
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsDynaStockTakingOn">
+            <summary>
+            是否启用动态盘点
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsProHavePostSta">
+            <summary>
+            商品是否启用配送中心
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.UnionEffectiveOrdersMonth">
+            <summary>
+            联盟有效订单月数
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.isMailSender">
+            <summary>
+            是否启用邮件定时发送
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.MaxBoxNum">
+            <summary>
+            拣货时最大盒子数
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.MenuName">
+            <summary>
+            后台菜单名称
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.enMenuName">
+            <summary>
+            后台英文菜单名称
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.CallCenterIpAddress">
+            <summary>
+            呼叫中心服务器IP地址
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.ProductDetailInfo">
+            <summary>
+            商品详细信息模版
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsShowWeight">
+            <summary>
+            是否显示商品重量
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsUserSN">
+            <summary>
+            商品是否启用序列号管理
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.ProductSpecDetailInfo">
+            <summary>
+            商品规格信息模版
+            </summary>
+        </member>
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.ProductDetailPic”忽略有格式错误的 XML 注释 -->
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.MinYudingDay">
+            <summary>
+            最小预订开始天数
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.MaxYudingDay">
+            <summary>
+            最大预订截止天数
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.isAutoCalProInte">
+            <summary>
+            是否自动计算商品赠送积分
+            </summary>
+        </member>
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.CalProInteProportion”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.isAviDateOn”忽略有格式错误的 XML 注释 -->
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsChgOrderAmountByPro">
+            <summary>
+            是否商品降价修改订单金额
+            </summary>
+        </member>
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.PrintShipOrder”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.PrintPicking”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.PrintPeihuo”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.PrintShipOrderList”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.PrintPurchaseOrder”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.CalAvgSaleNumDay”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.CalGrowthRateMonDay”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.IsAutoClosePub”忽略有格式错误的 XML 注释 -->
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsControlCarryTime">
+            <summary>
+            是否控制发货时间
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsAutoCreateSKU">
+            <summary>
+            是否自动生成SKU
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsAutoCreateProductCode">
+            <summary>
+            是否自动生成商品编码
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsAutoCreateCustomerCode">
+            <summary>
+            是否自动生成客户编码
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsAutoCreatePurchasingCode">
+            <summary>
+            是否自动生成供应商编码
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsAutoCreateProductCataCode">
+            <summary>
+            是否自动生成商品类别编码
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.FrontCarryTimeHourNum">
+            <summary>
+            订单指定送达时间前X小时必须进入待发货
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.UnclaimedDays">
+            <summary>
+            无主商品无人认领天数
+            </summary>
+        </member>
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.ModOrderNode”忽略有格式错误的 XML 注释 -->
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsUseCountry">
+            <summary>
+            订单是否启用国家
+            </summary>
+        </member>
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.PrintProvider”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.PrintQuot”忽略有格式错误的 XML 注释 -->
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.PrintTrackPO">
+            <summary>
+            采购跟踪打印模板
+            </summary>
+        </member>
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.PrintInternaPO”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.TempShopCartProList”忽略有格式错误的 XML 注释 -->
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.TempShopCartInfo">
+            <summary>
+            购物车信息（金额等）
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.TempShopCartSelectedProm">
+            <summary>
+            购物车已享受的促销活动模板
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.TempShopCartOptionProm">
+            <summary>
+            购物车可选择的促销活动模板
+            </summary>
+        </member>
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.UseBalance”忽略有格式错误的 XML 注释 -->
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.Domain">
+            <summary>
+            网站域名        
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.ServerIP">
+            <summary>
+            服务器IP
+            </summary>
+        </member>
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.ToXinyuRate”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.AutoJifenToYuEDays”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.MaxInvoice”忽略有格式错误的 XML 注释 -->
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.AviDateRateY">
+            <summary>
+            保质期有效率低于多少黄色提醒(百分比)
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.AviDateRateR">
+            <summary>
+            保质期有效率低于多少红色提醒(百分比)
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.ProCommentIntegral">
+            <summary>
+            评论商品获得的积分
+            </summary>
+        </member>
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.IsDisRettun”忽略有格式错误的 XML 注释 -->
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsPurPriceLast">
+            <summary>
+            默认采购价取最后一次采购单价格
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.CombToShipOrder">
+            <summary>
+            在发货单中展开组装商品
+            </summary>
+        </member>
+        <!-- 对于成员“P:ZKEShop.SystemFramework.GlobalConfig.MaxShipCaseRunNum”忽略有格式错误的 XML 注释 -->
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.CurShipCaseRunNum">
+            <summary>
+            当前的周转箱号码
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.IsCancelOrder">
+            <summary>
+            顾客是否可取消订单
+            </summary>
+        </member>
+        <member name="P:ZKEShop.SystemFramework.GlobalConfig.PersonalPwdLength">
+            <summary>
+            个人会员密码加密长度
+            </summary>
+        </member>
+        <member name="T:ZKEShop.SystemFramework.MsgConfig">
+            <summary>
+            信息配置类
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig.serverHost">
+            <summary>
+            serverHost
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FormWordsCN">
+            <summary>
+            _FormWordsCN
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromotionTypeCN">
+            <summary>
+            促销类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromotionConditionTypeCN">
+            <summary>
+            促销条件类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromConditionFitTypeCN">
+            <summary>
+            促销条件匹配类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._GiftsTypeCN">
+            <summary>
+            促销优惠类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PaymentKindCN">
+            <summary>
+            支付枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._OperTypeIDCN">
+            <summary>
+            业务操作种类
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PostTypeCN">
+            <summary>
+            订单配送类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._OrdersStatusCN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._AccStatusCN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ArticleQuestionStatusCN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ArticleQuestionTypeCN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._NotifyTypeCN">
+            <summary>
+            网站公告类别
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebSiteTypeCN">
+            <summary>
+            联盟网站类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._UnionAccountTypeCN">
+            <summary>
+            网站联盟账户类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CooperationTypeCN">
+            <summary>
+            网站联盟合作类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ChannelTypeCN">
+            <summary>
+            网站频道
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._PayStatusCN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._EGiftStatusCN">
+            <summary>
+            礼品兑换状态
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProductTypeCN">
+            <summary>
+            产品类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._OrderTypeCN">
+            <summary>
+            订单类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusVerifyStatusCN">
+            <summary>
+            会员认证状态
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ReStatusCN">
+            <summary>
+            退换货状态
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._RecomProKindCN">
+            <summary>
+            推荐商品类别
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._StoreInStatusCN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CostModeCN">
+            <summary>
+            库存核算方法
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ShipOrderStatusCN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StoreOutTypeCN">
+            <summary>
+            出库类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StoreInTypeCN">
+            <summary>
+            入库类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._DefTypeCN">
+            <summary>
+            广告活动识别方式
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._TBOrdStatusCN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._TBCarryTypeCN">
+            <summary>
+            淘宝运输方式
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FunctionIDCN">
+            <summary>
+            网页版块功能
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusNumTypeCN">
+            <summary>
+            客流统计类别
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusChatTypeCN">
+            <summary>
+            呼叫中心会话类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ReMoneyStatusCN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._StoreHousePropertyCN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PuchaseCheckConditionCN">
+            <summary>
+            采购订单审核条件
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CheckStatusCN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CheckoutPointCN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProSortRuleCN">
+            <summary>
+            商品排序规则
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._TemperaAttrCN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._PurchaseReturnTypeCN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CarrySheetStatusCN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._AlertSourceTypeCN">
+            <summary>
+            采购预警来源类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._POTypeCN">
+            <summary>
+            采购类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._SalePriceStatusCN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StockDealStatusCN">
+            <summary>
+            入库单的实际业务操作状态
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProvNavLinkTypeCN">
+            <summary>
+            店铺导航类别
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusCateConditionTypeCN">
+            <summary>
+            会员分类条件类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._MsgSellerMenuCN">
+            <summary>
+            商户中心菜单
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CommonCN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._DataListCN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StorageCN">
+            <summary>
+            仓储系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PurchaseCN">
+            <summary>
+            供货系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._OrderCN">
+            <summary>
+            订单系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProductCN">
+            <summary>
+            商品系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StockCN">
+            <summary>
+            仓储设置
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._MenuCN">
+            <summary>
+            我的菜单
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._UsersCN">
+            <summary>
+            员工
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromManageCN">
+            <summary>
+            营销管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusManageCN">
+            <summary>
+            会员管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebsiteManageCN">
+            <summary>
+            网站管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FinaceManageCN">
+            <summary>
+            财务管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._SysSetupCN">
+            <summary>
+            系统设置
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._DeskTopCN">
+            <summary>
+            桌面 
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebCommonCN">
+            <summary>
+            网站前台公用节点
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebProductCN">
+            <summary>
+            网站商品页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebTuanCN">
+            <summary>
+            网站团购页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebThemeCN">
+            <summary>
+            网站主题套餐页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebHelpCN">
+            <summary>
+            网站帮助
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebAccoutCN">
+            <summary>
+            网站个人中心
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._BalanceTypeCN">
+            <summary>
+            结算方式
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._BalanceStatusCN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FormWordsEN">
+            <summary>
+            _FormWordsEN
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromotionTypeEN">
+            <summary>
+            促销类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromotionConditionTypeEN">
+            <summary>
+            促销条件类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromConditionFitTypeEN">
+            <summary>
+            促销条件匹配类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._GiftsTypeEN">
+            <summary>
+            促销优惠类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PaymentKindEN">
+            <summary>
+            支付枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._OperTypeIDEN">
+            <summary>
+            业务操作种类
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._PostTypeEN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._OrdersStatusEN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._AccStatusEN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ArticleQuestionStatusEN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ArticleQuestionTypeEN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._NotifyTypeEN">
+            <summary>
+            网站公告类别
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebSiteTypeEN">
+            <summary>
+            联盟网站类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._UnionAccountTypeEN">
+            <summary>
+            网站联盟账户类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CooperationTypeEN">
+            <summary>
+            网站联盟合作类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ChannelTypeEN">
+            <summary>
+            网站频道
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._PayStatusEN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._EGiftStatusEN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProductTypeEN">
+            <summary>
+            产品类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ReStatusEN">
+            <summary>
+            退换货状态
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._RecomProKindEN">
+            <summary>
+            推荐商品类别
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._StoreInStatusEN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CostModeEN">
+            <summary>
+            库存核算方法
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ShipOrderStatusEN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StoreOutTypeEN">
+            <summary>
+            出库类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StoreInTypeEN">
+            <summary>
+            入库类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._DefTypeEN">
+            <summary>
+            广告活动识别方式
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._TBOrdStatusEN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._TBCarryTypeEN">
+            <summary>
+            淘宝运输方式
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FunctionIDEN">
+            <summary>
+            网页版块功能
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusNumTypeEN">
+            <summary>
+            客流统计类别
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusChatTypeEN">
+            <summary>
+            呼叫中心会话类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ReMoneyStatusEN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._StoreHousePropertyEN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CheckoutPointEN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProSortRuleEN">
+            <summary>
+            商品排序规则
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._TemperaAttrEN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._PurchaseReturnTypeEN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PuchaseCheckConditionEN">
+            <summary>
+            采购订单审核条件
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CarrySheetStatusEN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._AlertSourceTypeEN">
+            <summary>
+            采购预警来源类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._POTypeEN">
+            <summary>
+            采购类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._SalePriceStatusEN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._StockDealStatusEN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusCateConditionTypeEN">
+            <summary>
+            会员分类条件类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CommonEN”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._DataListEN”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StorageEN">
+            <summary>
+            仓储系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PurchaseEN">
+            <summary>
+            供货系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._OrderEN">
+            <summary>
+            订单系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProductEN">
+            <summary>
+            商品系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StockEN">
+            <summary>
+            仓储设置
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._MenuEN">
+            <summary>
+            我的菜单
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._UsersEN">
+            <summary>
+            员工
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromManageEN">
+            <summary>
+            营销管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusManageEN">
+            <summary>
+            会员管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebsiteManageEN">
+            <summary>
+            网站管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FinaceManageEN">
+            <summary>
+            财务管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._SysSetupEN">
+            <summary>
+            系统设置
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._DeskTopEN">
+            <summary>
+            桌面 
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebCommonEN">
+            <summary>
+            网站前台公用节点
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebProductEN">
+            <summary>
+            网站商品页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebTuanEN">
+            <summary>
+            网站团购页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebThemeEN">
+            <summary>
+            网站主题套餐页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebHelpEN">
+            <summary>
+            网站帮助
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebAccoutEN">
+            <summary>
+            网站个人中心
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FormWordsFR">
+            <summary>
+            _FormWordsFR
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromotionTypeFR">
+            <summary>
+            促销类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromotionConditionTypeFR">
+            <summary>
+            促销条件类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromConditionFitTypeFR">
+            <summary>
+            促销条件匹配类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._GiftsTypeFR">
+            <summary>
+            促销优惠类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PaymentKindFR">
+            <summary>
+            支付枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._OperTypeIDFR">
+            <summary>
+            业务操作种类
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._PostTypeFR”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._OrdersStatusFR”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._AccStatusFR”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ArticleQuestionStatusFR”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ArticleQuestionTypeFR”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._NotifyTypeFR">
+            <summary>
+            网站公告类别
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebSiteTypeFR">
+            <summary>
+            联盟网站类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._UnionAccountTypeFR">
+            <summary>
+            网站联盟账户类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CooperationTypeFR">
+            <summary>
+            网站联盟合作类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ChannelTypeFR">
+            <summary>
+            网站频道
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._PayStatusFR”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._EGiftStatusFR”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProductTypeFR">
+            <summary>
+            产品类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ReStatusFR”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._RecomProKindFR">
+            <summary>
+            推荐商品类别
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._StoreInStatusFR”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CostModeFR">
+            <summary>
+            库存核算方法
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ShipOrderStatusFR”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StoreOutTypeFR">
+            <summary>
+            出库类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StoreInTypeFR">
+            <summary>
+            入库类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._DefTypeFR">
+            <summary>
+            广告活动识别方式
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._TBOrdStatusFR”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._TBCarryTypeFR">
+            <summary>
+            淘宝运输方式
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FunctionIDFR">
+            <summary>
+            网页版块功能
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusNumTypeFR">
+            <summary>
+            客流统计类别
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusChatTypeFR">
+            <summary>
+            呼叫中心会话类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ReMoneyStatusFR”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._StoreHousePropertyFR”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CheckoutPointFR”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProSortRuleFR">
+            <summary>
+            商品排序规则
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._TemperaAttrFR”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._PurchaseReturnTypeFR”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PuchaseCheckConditionFR">
+            <summary>
+            采购订单审核条件
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CarrySheetStatusFR”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._AlertSourceTypeFR">
+            <summary>
+            采购预警来源类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._POTypeFR">
+            <summary>
+            采购类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._SalePriceStatusFR”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusCateConditionTypeFR">
+            <summary>
+            会员分类条件类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CommonFR”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._DataListFR”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StorageFR">
+            <summary>
+            仓储系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PurchaseFR">
+            <summary>
+            供货系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._OrderFR">
+            <summary>
+            订单系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProductFR">
+            <summary>
+            商品系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StockFR">
+            <summary>
+            仓储设置
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._MenuFR">
+            <summary>
+            我的菜单
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._UsersFR">
+            <summary>
+            员工
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromManageFR">
+            <summary>
+            营销管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusManageFR">
+            <summary>
+            会员管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebsiteManageFR">
+            <summary>
+            网站管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FinaceManageFR">
+            <summary>
+            财务管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._SysSetupFR">
+            <summary>
+            系统设置
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._DeskTopFR">
+            <summary>
+            桌面 
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebCommonFR">
+            <summary>
+            网站前台公用节点
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebProductFR">
+            <summary>
+            网站商品页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebTuanFR">
+            <summary>
+            网站团购页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebThemeFR">
+            <summary>
+            网站主题套餐页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebHelpFR">
+            <summary>
+            网站帮助
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebAccoutFR">
+            <summary>
+            网站个人中心
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FormWordsGE">
+            <summary>
+            _FormWordsGE
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromotionTypeGE">
+            <summary>
+            促销类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromotionConditionTypeGE">
+            <summary>
+            促销条件类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromConditionFitTypeGE">
+            <summary>
+            促销条件匹配类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._GiftsTypeGE">
+            <summary>
+            促销优惠类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PaymentKindGE">
+            <summary>
+            支付枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._OperTypeIDGE">
+            <summary>
+            业务操作种类
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._PostTypeGE”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._OrdersStatusGE”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._AccStatusGE”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ArticleQuestionStatusGE”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ArticleQuestionTypeGE”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._NotifyTypeGE">
+            <summary>
+            网站公告类别
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebSiteTypeGE">
+            <summary>
+            联盟网站类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._UnionAccountTypeGE">
+            <summary>
+            网站联盟账户类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CooperationTypeGE">
+            <summary>
+            网站联盟合作类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ChannelTypeGE">
+            <summary>
+            网站频道
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._PayStatusGE”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._EGiftStatusGE”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProductTypeGE">
+            <summary>
+            产品类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ReStatusGE”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._RecomProKindGE">
+            <summary>
+            推荐商品类别
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._StoreInStatusGE”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CostModeGE">
+            <summary>
+            库存核算方法
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ShipOrderStatusGE”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StoreOutTypeGE">
+            <summary>
+            出库类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StoreInTypeGE">
+            <summary>
+            入库类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._DefTypeGE">
+            <summary>
+            广告活动识别方式
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._TBOrdStatusGE”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._TBCarryTypeGE">
+            <summary>
+            淘宝运输方式
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FunctionIDGE">
+            <summary>
+            网页版块功能
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusNumTypeGE">
+            <summary>
+            客流统计类别
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusChatTypeGE">
+            <summary>
+            呼叫中心会话类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ReMoneyStatusGE”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._StoreHousePropertyGE”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CheckoutPointGE”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProSortRuleGE">
+            <summary>
+            商品排序规则
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._TemperaAttrGE”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._PurchaseReturnTypeGE”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PuchaseCheckConditionGE">
+            <summary>
+            采购订单审核条件
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CarrySheetStatusGE”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._AlertSourceTypeGE">
+            <summary>
+            采购预警来源类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._POTypeGE">
+            <summary>
+            采购类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._SalePriceStatusGE”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusCateConditionTypeGE">
+            <summary>
+            会员分类条件类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CommonGE”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._DataListGE”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StorageGE">
+            <summary>
+            仓储系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PurchaseGE">
+            <summary>
+            供货系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._OrderGE">
+            <summary>
+            订单系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProductGE">
+            <summary>
+            商品系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StockGE">
+            <summary>
+            仓储设置
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._MenuGE">
+            <summary>
+            我的菜单
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._UsersGE">
+            <summary>
+            员工
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromManageGE">
+            <summary>
+            营销管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusManageGE">
+            <summary>
+            会员管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebsiteManageGE">
+            <summary>
+            网站管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FinaceManageGE">
+            <summary>
+            财务管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._SysSetupGE">
+            <summary>
+            系统设置
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._DeskTopGE">
+            <summary>
+            桌面 
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebCommonGE">
+            <summary>
+            网站前台公用节点
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebProductGE">
+            <summary>
+            网站商品页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebTuanGE">
+            <summary>
+            网站团购页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebThemeGE">
+            <summary>
+            网站主题套餐页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebHelpGE">
+            <summary>
+            网站帮助
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebAccoutGE">
+            <summary>
+            网站个人中心
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FormWordsIT">
+            <summary>
+            _FormWordsIT
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromotionTypeIT">
+            <summary>
+            促销类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromotionConditionTypeIT">
+            <summary>
+            促销条件类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromConditionFitTypeIT">
+            <summary>
+            促销条件匹配类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._GiftsTypeIT">
+            <summary>
+            促销优惠类型枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PaymentKindIT">
+            <summary>
+            支付枚举
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._OperTypeIDIT">
+            <summary>
+            业务操作种类
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._PostTypeIT”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._OrdersStatusIT”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._AccStatusIT”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ArticleQuestionStatusIT”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ArticleQuestionTypeIT”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._NotifyTypeIT">
+            <summary>
+            网站公告类别
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebSiteTypeIT">
+            <summary>
+            联盟网站类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._UnionAccountTypeIT">
+            <summary>
+            网站联盟账户类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CooperationTypeIT">
+            <summary>
+            网站联盟合作类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ChannelTypeIT">
+            <summary>
+            网站频道
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._PayStatusIT”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._EGiftStatusIT”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProductTypeIT">
+            <summary>
+            产品类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ReStatusIT”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._RecomProKindIT">
+            <summary>
+            推荐商品类别
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._StoreInStatusIT”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CostModeIT">
+            <summary>
+            库存核算方法
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ShipOrderStatusIT”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StoreOutTypeIT">
+            <summary>
+            出库类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StoreInTypeIT">
+            <summary>
+            入库类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._DefTypeIT">
+            <summary>
+            广告活动识别方式
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._TBOrdStatusIT”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._TBCarryTypeIT">
+            <summary>
+            淘宝运输方式
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FunctionIDIT">
+            <summary>
+            网页版块功能
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusNumTypeIT">
+            <summary>
+            客流统计类别
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusChatTypeIT">
+            <summary>
+            呼叫中心会话类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._ReMoneyStatusIT”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._StoreHousePropertyIT”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CheckoutPointIT”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProSortRuleIT">
+            <summary>
+            商品排序规则
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._TemperaAttrIT”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._PurchaseReturnTypeIT”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PuchaseCheckConditionIT">
+            <summary>
+            采购订单审核条件
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._CarrySheetStatusIT”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._AlertSourceTypeIT">
+            <summary>
+            采购预警来源类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._POTypeIT">
+            <summary>
+            采购类型
+            </summary>
+        </member>
+        <!-- 对于成员“F:ZKEShop.SystemFramework.MsgConfig._SalePriceStatusIT”忽略有格式错误的 XML 注释 -->
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusCateConditionTypeIT">
+            <summary>
+            会员分类条件类型
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CommonIT">
+            <summary>
+            公共的
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._DataListIT">
+            <summary>
+            DataList表
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StorageIT">
+            <summary>
+            仓储系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PurchaseIT">
+            <summary>
+            供货系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._OrderIT">
+            <summary>
+            订单系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._ProductIT">
+            <summary>
+            商品系统
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._StockIT">
+            <summary>
+            仓储设置
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._MenuIT">
+            <summary>
+            我的菜单
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._UsersIT">
+            <summary>
+            员工
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._PromManageIT">
+            <summary>
+            营销管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._CusManageIT">
+            <summary>
+            会员管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebsiteManageIT">
+            <summary>
+            网站管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._FinaceManageIT">
+            <summary>
+            财务管理
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._SysSetupIT">
+            <summary>
+            系统设置
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._DeskTopIT">
+            <summary>
+            桌面 
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebCommonIT">
+            <summary>
+            网站前台公用节点
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebProductIT">
+            <summary>
+            网站商品页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebTuanIT">
+            <summary>
+            网站团购页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebThemeIT">
+            <summary>
+            网站主题套餐页面
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebHelpIT">
+            <summary>
+            网站帮助
+            </summary>
+        </member>
+        <member name="F:ZKEShop.SystemFramework.MsgConfig._WebAccoutIT">
+            <summary>
+            网站个人中心
+            </summary>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.MsgConfig.GetSelectOption(ZKEShop.Common.AppLanguage,ZKEShop.Common.AppEnumName)">
+            <summary>
+            create by niuyy
+            根据语言版本得到下拉框中的项
+            </summary>
+            <param name="lang">语言版本</param>
+            <param name="msgType">枚举类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.MsgConfig.GetSelectOption(ZKEShop.Common.AppLanguage,ZKEShop.Common.Internationalization)">
+            <summary>
+            create by minzw
+            根据语言版本得到国际化的显示文本
+            </summary>
+            <param name="lang">语言版本</param>
+            <param name="msgType">枚举类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.MsgConfig.ReadMessageConfigCN(System.String)">
+            <summary>
+            应用程序加载时讲配置文件信息读取到内存中
+            </summary>
+            <param name="filePath">文件路径</param>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.MsgConfig.ReadMessageConfigEN(System.String)">
+            <summary>
+            应用程序加载时讲配置文件信息读取到内存中
+            </summary>
+            <param name="filePath">文件路径</param>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.MsgConfig.ReadMessageConfigFR(System.String)">
+            <summary>
+            应用程序加载时讲配置文件信息读取到内存中
+            </summary>
+            <param name="filePath">文件路径</param>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.MsgConfig.ReadMessageConfigGE(System.String)">
+            <summary>
+            应用程序加载时讲配置文件信息读取到内存中
+            </summary>
+            <param name="filePath">文件路径</param>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.MsgConfig.ReadMessageConfigIT(System.String)">
+            <summary>
+            应用程序加载时讲配置文件信息读取到内存中
+            </summary>
+            <param name="filePath">文件路径</param>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.MsgConfig.GetMessage(ZKEShop.Common.AppLanguage,ZKEShop.Common.AppEnumName,System.String)">
+            <summary>
+            create by niuyy
+            根据语言版本，枚举类型，枚举值返回枚举描述
+            </summary>
+            <param name="lang">语言版本</param>
+            <param name="msgType">枚举类型</param>
+            <param name="messageID">枚举值</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.MsgConfig.GetMessageCN(ZKEShop.Common.AppEnumName,System.String)">
+            <summary>
+            create by niuyy
+            根据枚举及值得到枚举的描述
+            </summary>
+            <param name="msgType">枚举类型</param>
+            <param name="messageID">枚举值</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.MsgConfig.GetMessageEN(ZKEShop.Common.AppEnumName,System.String)">
+            <summary>
+            create by niuyy
+            根据枚举及值得到枚举的描述
+            </summary>
+            <param name="msgType">枚举类型</param>
+            <param name="messageID">枚举值</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.MsgConfig.GetMessageFR(ZKEShop.Common.AppEnumName,System.String)">
+            <summary>
+            create by niuyy
+            根据枚举及值得到枚举的描述
+            </summary>
+            <param name="msgType">枚举类型</param>
+            <param name="messageID">枚举值</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.MsgConfig.GetMessageGE(ZKEShop.Common.AppEnumName,System.String)">
+            <summary>
+            create by niuyy
+            根据枚举及值得到枚举的描述
+            </summary>
+            <param name="msgType">枚举类型</param>
+            <param name="messageID">枚举值</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZKEShop.SystemFramework.MsgConfig.GetMessageIT(ZKEShop.Common.AppEnumName,System.String)">
+            <summary>
+            create by niuyy
+            根据枚举及值得到枚举的描述
+            </summary>
+            <param name="msgType">枚举类型</param>
+            <param name="messageID">枚举值</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZKEShop.SystemFramework._MD5.md5Encrypt(System.String)">
+            md5加密解密
+            <param name="strkey">密钥不限定位数</param>   
+        </member>
+        <member name="M:ZKEShop.SystemFramework._MD5.md5Decrypt(System.String)">
+              <summary>   
+              md5解密   
+              </summary>   
+              <param   name="encryptedString"></param>   
+              <param   name="strkey">密钥</param>   
+              <returns></returns>   
+        </member>
+        <member name="M:ZKEShop.SystemFramework._MD5.md5Encrypt(System.String,System.Int32)">
+              <summary>   
+              md5加密   
+              </summary>   
+              <param   name="source"></param>   
+              <returns></returns>   
+        </member>
+        <member name="M:ZKEShop.SystemFramework._MD5.MD5pwd(System.String)">
+            <summary>
+            md5加密
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

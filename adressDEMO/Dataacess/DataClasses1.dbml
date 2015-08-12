@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Address" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=Dell-PC;Initial Catalog=Address;Persist Security Info=True;User ID=sa" SettingsObjectName="Dataacess.Properties.Settings" SettingsPropertyName="AddressConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Province" Member="Province">
+    <Type Name="Province">
+      <Column Name="ProvinceID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProvinceName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="MapFile" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Pingyin" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="ProvinceCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Province_City" Member="City" ThisKey="ProvinceID" OtherKey="ProvinceID" Type="City" />
+    </Type>
+  </Table>
+  <Table Name="dbo.City" Member="City">
+    <Type Name="City">
+      <Column Name="CityID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CityName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ProvinceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AreaCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IP" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MapFile" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Pingyin" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="SmallAreaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="City_CityZone" Member="CityZone" ThisKey="CityID" OtherKey="CityID" Type="CityZone" />
+      <Association Name="Province_City" Member="Province" ThisKey="ProvinceID" OtherKey="ProvinceID" Type="Province" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="SmallArea_City" Member="SmallArea" ThisKey="SmallAreaID" OtherKey="SmallAreaID" Type="SmallArea" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CityZone" Member="CityZone">
+    <Type Name="CityZone">
+      <Column Name="CityZoneID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityZoneName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="IP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="MapFile" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Pingyin" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="CityZoneCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="CityZone_SmallArea" Member="SmallArea" ThisKey="CityZoneID" OtherKey="CityZoneID" Type="SmallArea" />
+      <Association Name="City_CityZone" Member="City" ThisKey="CityID" OtherKey="CityID" Type="City" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SmallArea" Member="SmallArea">
+    <Type Name="SmallArea">
+      <Column Name="SmallAreaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SmallAreaName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="SortID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityZoneID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RegionXY" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Association Name="SmallArea_City" Member="City" ThisKey="SmallAreaID" OtherKey="SmallAreaID" Type="City" />
+      <Association Name="CityZone_SmallArea" Member="CityZone" ThisKey="CityZoneID" OtherKey="CityZoneID" Type="CityZone" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
