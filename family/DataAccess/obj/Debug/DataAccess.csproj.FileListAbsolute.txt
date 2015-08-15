@@ -1,6 +1,0 @@
-E:\family\family\DataAccess\bin\Debug\DataAccess.dll.config
-E:\family\family\DataAccess\bin\Debug\DataAccess.dll
-E:\family\family\DataAccess\bin\Debug\DataAccess.pdb
-E:\family\family\DataAccess\obj\Debug\DataAccess.dll
-E:\family\family\DataAccess\obj\Debug\DataAccess.pdb
-E:\family\family\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
