@@ -25,7 +25,7 @@ namespace family.salary
         }
         protected void load()
         {
-            usercompany = from o in db.UserCompany select o;
+            usercompany = from o in db.UserCompany  where (o.UserID==LoginUser.UserID)select o;
             yearmonth = from o in db.YearMonth select o;
         
         }
