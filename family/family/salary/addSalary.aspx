@@ -23,7 +23,7 @@
         <div class="new_main">
             <!--左侧导航-->
             <div class="contents">
-               <div class="title1"><h2>我的东家们</h2></div>
+               <div class="title1"><h2>我的工资</h2></div>
                <div class="contents-r">
                     <ul>
                     <li><a href="salarylist.aspx" title="东家列表">工资列表</a></li>
@@ -43,11 +43,11 @@
                
                 <!--手动添加公司信息-->
                 <div id="shoudong" >
-                     <form autocomplete="off">
-                       <input type="hidden"  value="shoudongSave" name="operation"/> 
+                     <form autocomplete="off" method="post">
+                       <input type="hidden"  value="save" name="operation"/> 
                        <div>
                     <span class="sp3">请选择一家公司：</span>
-                    <select id="" name="companyID" >
+                    <select id="" name="usercompanyID" >
                        <%foreach (var item in usercompany)
                          { %>
                           <option value="<%=item.userCompanyID %>"><%=item.Company.CompanyName %></option>
@@ -59,7 +59,7 @@
                   </div>
                        <div>
                     <span class="sp3">请选择工资年月：</span>
-                    <select id="" name="companyID" >
+                    <select id="" name="yearMonthID" >
                        <%foreach (var item in yearmonth)
                          { %>
                           <option value="<%=item.YearMonthID %>"><%=item.Yearmonthvalue %></option>
@@ -71,38 +71,73 @@
                   </div>
                        <div>
                           <span class="sp3">发工资日期：</span>
-                          <input type="text" id="" onClick="WdatePicker()" name="joindate"/>
+                          <input type="text" id="" onClick="WdatePicker()" name="saralyDate"/>
                       </div>
-                       <div>
-                           <span class="sp3">应发工资：</span>
-                          <input type="text" id="" name="address"/>
-                       </div>
+                       <div>----------------------------------------------------------------</div>
                        <div>
                            <span class="sp3">基本工资：</span>
-                          <input type="text" id="" name="address"/>
+                          <input type="text" id="" name="baseMoney"/>
                        </div>
                        <div>
                            <span class="sp3">绩效工资：</span>
-                          <input type="text" id="" name="address"/>
+                          <input type="text" id="" name="jixiaoMoney"/>
                        </div>
                        <div>
                            <span class="sp3">加班工资：</span>
-                          <input type="text" id="" name="address"/>
+                          <input type="text" id="" name="jiabanMoney"/>
                        </div>
+                       <div>
+                           <span class="sp3">补贴工资：</span>
+                          <input type="text" id="" name="butieMoney"/>
+                       </div>
+                       <div>
+                           <span class="sp3">请假扣除工资：</span>
+                          <input type="text" id="" name="kouchuMoney"/>
+                       </div>
+                        
+                        <div>
+                           <span class="sp3">1、应发工资：</span>
+                          <input type="text" id="" name="totalMoney"/>
+                       </div>
+                         <div>----------------------------------------------------------------</div>
                           <div>
                            <span class="sp3">个人公积金：</span>
-                          <input type="text" id="" name="address"/>
+                          <input type="text" id="" name="userFund"/>
                        </div>
                           <div>
                            <span class="sp3">个人社保：</span>
-                          <input type="text" id="" name="address"/>
+                          <input type="text" id="" name="userShebao"/>
                        </div>
 
                
                    <div>
-                        <span class="sp3">公司电描述：</span>
-                       <input type="text" id="" name="describe"/>
+                        <span class="sp3">2、税前工资：</span>
+                       <input type="text" id="" name="PretaxMoney"/>
                    </div>
+                      <div>----------------------------------------------------------------</div>
+                         <div>
+                        <span class="sp3">个人所得税：</span>
+                       <input type="text" id="" name="userTax"/>
+                   </div>
+
+                     <div>
+                        <span class="sp3">3、实发工资：</span>
+                       <input type="text" id="" name="RealMoney"/></div>
+                    <div>
+                     <div>----------------------------------------------------------------</div>
+                       <span class="sp3">公司社保：</span>
+                       <input type="text" id="" name="comShebao"/> </div>
+                  
+                    <div>
+                        <span class="sp3">公司公积金：</span>
+                       <input type="text" id="" name="comFund"/>  </div>
+                   <div>
+
+
+                        <span class="sp3">备注：</span>
+                       <input type="text" id="" name="remark"/>  </div>
+                 
+                   
                    <div>
                     
                    <input type="submit" id="" value="提交" name=""/>

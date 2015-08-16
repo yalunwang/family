@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Configuration;
 using ZKEShop.Common;
-namespace family
+namespace jquery_easyui
 {
     public class pagebase : System.Web.UI.Page
     {

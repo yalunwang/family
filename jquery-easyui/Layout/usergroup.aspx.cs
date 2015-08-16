@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace family.Layout
+namespace  jquery_easyui.Layout
 {
     public partial class usergroup : pagebase
     {

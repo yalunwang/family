@@ -80,7 +80,7 @@
     <Compile Include="BuyProduct.cs" />
     <Compile Include="CacheStorage\DefaultCacheAdapter.cs" />
     <Compile Include="CacheStorage\ICacheStorage.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="number.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="ConstVar.cs" />
     <Compile Include="CustomerPower.cs" />

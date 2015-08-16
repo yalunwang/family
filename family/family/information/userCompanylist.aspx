@@ -11,9 +11,7 @@
     <title></title>
       <link href="../css/my.css" rel="Stylesheet" type="text/css" />
     <style>
-        td {border-bottom:1px solid #aaa;
-            padding:7px 0px;
-        }
+       
     </style>
 </head>
 <body>
@@ -65,7 +63,7 @@
                              <tr >
                                 <td width="16%" scope="col"><%=item.Company.CompanyName %></td> 
                                    <td width="20%" scope="col"><%=item.Company.Province.ProvinceName+item.Company.City.CityName+item.Company.CityZone.CityZoneName+item.Company.Address %></td> 
-                                   <td width="10%" scope="col"><a target="_blank" href="<%=item.Company.Website %>">公司网址</a></td>
+                                   <td width="10%" scope="col"><a target="_blank" href="<%=item.Company.Website %>">官网</a></td>
                                    <td width="8%" scope="col"><%=item.Company.CompanyType.comTypename %></td> 
                                    <td width="12%" scope="col"><%=((DateTime)item.joinDate).ToString("yyy-MM-dd")%></td> 
                                    <td width="12%" scope="col"><%=item.leaveDate==null?"至今": ((DateTime)item.leaveDate).ToString("yyy-MM-dd") %></td> 

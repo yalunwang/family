@@ -248,6 +248,14 @@ namespace DataAccess
 				return this.GetTable<UserCompany>();
 			}
 		}
+		
+		public System.Data.Linq.Table<SaralyV> SaralyV
+		{
+			get
+			{
+				return this.GetTable<SaralyV>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.City")]
@@ -7289,6 +7297,537 @@ namespace DataAccess
 		{
 			this.SendPropertyChanging();
 			entity.UserCompany = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SaralyV")]
+	public partial class SaralyV
+	{
+		
+		private int _SaralyID;
+		
+		private int _userCompanyID;
+		
+		private int _YearMonthID;
+		
+		private string _Monthsaraly;
+		
+		private string _Yearsaraly;
+		
+		private System.Nullable<System.DateTime> _saralyDate;
+		
+		private System.Nullable<System.DateTime> _logdate;
+		
+		private System.Nullable<decimal> _TotalMoney;
+		
+		private System.Nullable<decimal> _baseMoney;
+		
+		private System.Nullable<decimal> _jixiaoMoney;
+		
+		private System.Nullable<decimal> _butieMoney;
+		
+		private System.Nullable<decimal> _kouchuMoney;
+		
+		private System.Nullable<decimal> _jiabanFei;
+		
+		private System.Nullable<decimal> _qitaMoney;
+		
+		private System.Nullable<decimal> _userFund;
+		
+		private System.Nullable<decimal> _userShebao;
+		
+		private System.Nullable<decimal> _Pretaxsaraly;
+		
+		private System.Nullable<decimal> _usertax;
+		
+		private System.Nullable<decimal> _RealMoney;
+		
+		private System.Nullable<decimal> _comFund;
+		
+		private System.Nullable<decimal> _comShebao;
+		
+		private string _remark;
+		
+		private int _UserID;
+		
+		private int _CompanyID;
+		
+		private System.Nullable<bool> _iscurrent;
+		
+		private string _CompanyName;
+		
+		private string _Yearmonthvalue;
+		
+		private string _Monthsign;
+		
+		private string _Yearsign;
+		
+		public SaralyV()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SaralyID", DbType="Int NOT NULL")]
+		public int SaralyID
+		{
+			get
+			{
+				return this._SaralyID;
+			}
+			set
+			{
+				if ((this._SaralyID != value))
+				{
+					this._SaralyID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userCompanyID", DbType="Int NOT NULL")]
+		public int userCompanyID
+		{
+			get
+			{
+				return this._userCompanyID;
+			}
+			set
+			{
+				if ((this._userCompanyID != value))
+				{
+					this._userCompanyID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YearMonthID", DbType="Int NOT NULL")]
+		public int YearMonthID
+		{
+			get
+			{
+				return this._YearMonthID;
+			}
+			set
+			{
+				if ((this._YearMonthID != value))
+				{
+					this._YearMonthID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Monthsaraly", DbType="VarChar(10)")]
+		public string Monthsaraly
+		{
+			get
+			{
+				return this._Monthsaraly;
+			}
+			set
+			{
+				if ((this._Monthsaraly != value))
+				{
+					this._Monthsaraly = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Yearsaraly", DbType="VarChar(10)")]
+		public string Yearsaraly
+		{
+			get
+			{
+				return this._Yearsaraly;
+			}
+			set
+			{
+				if ((this._Yearsaraly != value))
+				{
+					this._Yearsaraly = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_saralyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> saralyDate
+		{
+			get
+			{
+				return this._saralyDate;
+			}
+			set
+			{
+				if ((this._saralyDate != value))
+				{
+					this._saralyDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_logdate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> logdate
+		{
+			get
+			{
+				return this._logdate;
+			}
+			set
+			{
+				if ((this._logdate != value))
+				{
+					this._logdate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalMoney", DbType="Money")]
+		public System.Nullable<decimal> TotalMoney
+		{
+			get
+			{
+				return this._TotalMoney;
+			}
+			set
+			{
+				if ((this._TotalMoney != value))
+				{
+					this._TotalMoney = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_baseMoney", DbType="Money")]
+		public System.Nullable<decimal> baseMoney
+		{
+			get
+			{
+				return this._baseMoney;
+			}
+			set
+			{
+				if ((this._baseMoney != value))
+				{
+					this._baseMoney = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_jixiaoMoney", DbType="Money")]
+		public System.Nullable<decimal> jixiaoMoney
+		{
+			get
+			{
+				return this._jixiaoMoney;
+			}
+			set
+			{
+				if ((this._jixiaoMoney != value))
+				{
+					this._jixiaoMoney = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_butieMoney", DbType="Money")]
+		public System.Nullable<decimal> butieMoney
+		{
+			get
+			{
+				return this._butieMoney;
+			}
+			set
+			{
+				if ((this._butieMoney != value))
+				{
+					this._butieMoney = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kouchuMoney", DbType="Money")]
+		public System.Nullable<decimal> kouchuMoney
+		{
+			get
+			{
+				return this._kouchuMoney;
+			}
+			set
+			{
+				if ((this._kouchuMoney != value))
+				{
+					this._kouchuMoney = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_jiabanFei", DbType="Money")]
+		public System.Nullable<decimal> jiabanFei
+		{
+			get
+			{
+				return this._jiabanFei;
+			}
+			set
+			{
+				if ((this._jiabanFei != value))
+				{
+					this._jiabanFei = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_qitaMoney", DbType="Money")]
+		public System.Nullable<decimal> qitaMoney
+		{
+			get
+			{
+				return this._qitaMoney;
+			}
+			set
+			{
+				if ((this._qitaMoney != value))
+				{
+					this._qitaMoney = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userFund", DbType="Money")]
+		public System.Nullable<decimal> userFund
+		{
+			get
+			{
+				return this._userFund;
+			}
+			set
+			{
+				if ((this._userFund != value))
+				{
+					this._userFund = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userShebao", DbType="Money")]
+		public System.Nullable<decimal> userShebao
+		{
+			get
+			{
+				return this._userShebao;
+			}
+			set
+			{
+				if ((this._userShebao != value))
+				{
+					this._userShebao = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pretaxsaraly", DbType="Money")]
+		public System.Nullable<decimal> Pretaxsaraly
+		{
+			get
+			{
+				return this._Pretaxsaraly;
+			}
+			set
+			{
+				if ((this._Pretaxsaraly != value))
+				{
+					this._Pretaxsaraly = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usertax", DbType="Money")]
+		public System.Nullable<decimal> usertax
+		{
+			get
+			{
+				return this._usertax;
+			}
+			set
+			{
+				if ((this._usertax != value))
+				{
+					this._usertax = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RealMoney", DbType="Money")]
+		public System.Nullable<decimal> RealMoney
+		{
+			get
+			{
+				return this._RealMoney;
+			}
+			set
+			{
+				if ((this._RealMoney != value))
+				{
+					this._RealMoney = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comFund", DbType="Money")]
+		public System.Nullable<decimal> comFund
+		{
+			get
+			{
+				return this._comFund;
+			}
+			set
+			{
+				if ((this._comFund != value))
+				{
+					this._comFund = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comShebao", DbType="Money")]
+		public System.Nullable<decimal> comShebao
+		{
+			get
+			{
+				return this._comShebao;
+			}
+			set
+			{
+				if ((this._comShebao != value))
+				{
+					this._comShebao = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_remark", DbType="VarChar(2000)")]
+		public string remark
+		{
+			get
+			{
+				return this._remark;
+			}
+			set
+			{
+				if ((this._remark != value))
+				{
+					this._remark = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this._UserID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyID", DbType="Int NOT NULL")]
+		public int CompanyID
+		{
+			get
+			{
+				return this._CompanyID;
+			}
+			set
+			{
+				if ((this._CompanyID != value))
+				{
+					this._CompanyID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_iscurrent", DbType="Bit")]
+		public System.Nullable<bool> iscurrent
+		{
+			get
+			{
+				return this._iscurrent;
+			}
+			set
+			{
+				if ((this._iscurrent != value))
+				{
+					this._iscurrent = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="VarChar(200)")]
+		public string CompanyName
+		{
+			get
+			{
+				return this._CompanyName;
+			}
+			set
+			{
+				if ((this._CompanyName != value))
+				{
+					this._CompanyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Yearmonthvalue", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string Yearmonthvalue
+		{
+			get
+			{
+				return this._Yearmonthvalue;
+			}
+			set
+			{
+				if ((this._Yearmonthvalue != value))
+				{
+					this._Yearmonthvalue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Monthsign", DbType="VarChar(10)")]
+		public string Monthsign
+		{
+			get
+			{
+				return this._Monthsign;
+			}
+			set
+			{
+				if ((this._Monthsign != value))
+				{
+					this._Monthsign = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Yearsign", DbType="VarChar(10)")]
+		public string Yearsign
+		{
+			get
+			{
+				return this._Yearsign;
+			}
+			set
+			{
+				if ((this._Yearsign != value))
+				{
+					this._Yearsign = value;
+				}
+			}
 		}
 	}
 }

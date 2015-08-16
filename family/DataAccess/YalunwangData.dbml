@@ -310,4 +310,37 @@
       <Association Name="user_UserCompany" Member="user" ThisKey="UserID" OtherKey="UserID" Type="user" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.SaralyV" Member="SaralyV">
+    <Type Name="SaralyV">
+      <Column Name="SaralyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="userCompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="YearMonthID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Monthsaraly" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Yearsaraly" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="saralyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="logdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TotalMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="baseMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="jixiaoMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="butieMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="kouchuMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="jiabanFei" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="qitaMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="userFund" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="userShebao" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Pretaxsaraly" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="usertax" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="RealMoney" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="comFund" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="comShebao" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="remark" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="iscurrent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CompanyName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Yearmonthvalue" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Monthsign" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Yearsign" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

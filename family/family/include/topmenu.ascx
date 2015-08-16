@@ -12,12 +12,12 @@
             </ul>
         </li>
         <li class="line"></li>
-        <li><a href="#" title="网络维护">工资管理</a>
+        <li><a href="#" title="工资管理">工资管理</a>
               <ul>
-                <li ><a href="/salary/salarylist.aspx" title="主站设置">主站设置</a></li>
-                <li ><a href="../wangluoweihu/dianbiao.aspx" title="网络管理">网络管理</a></li>
+                <li ><a href="/salary/salarylist.aspx" title="工资列表">工资列表</a></li>
+                <li ><a href="/salary/addSalary.aspx" title="添加工资">添加工资</a></li>
              
-                <li ><a href="#" title="复位">复位</a></li>
+                <li ><a href="#" title="工资统计">工资统计</a></li>
               </ul>
         </li>
         <li class="line"></li>

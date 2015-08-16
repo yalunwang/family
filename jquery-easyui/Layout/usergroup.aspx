@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="usergroup.aspx.cs" Inherits="family.Layout.usergroup" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="usergroup.aspx.cs" Inherits="jquery_easyui.Layout.usergroup" %>
 
 <!DOCTYPE html>
 
@@ -8,7 +8,7 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" >
      <div>
              <span class="sp3">请输入用户组名字：</span>
               <input type="text" id="" name="usergroupName"/>
