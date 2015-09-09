@@ -71,7 +71,7 @@
                   </div>
                        <div>
                           <span class="sp3">发工资日期：</span>
-                          <input type="text" id="" onClick="WdatePicker()" name="saralyDate"/>
+                          <input type="text" readonly id="" onClick="WdatePicker()" name="saralyDate"/>
                       </div>
                        <div>----------------------------------------------------------------</div>
                        <div>
