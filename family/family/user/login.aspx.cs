@@ -12,6 +12,11 @@ namespace family.user
       
         protected void Page_Load(object sender, EventArgs e)
         {
+            var query = db.user.Where(o =>o.CityID==9999999 );
+            foreach (var item in query)
+            {
+                item.CityID = 2;
+            }
             string operation = ZKRequest.GetString("operation");
             FromUrl.Value = Convert.ToString(Server.UrlDecode(Request["FromUrl"]));
             switch(operation)

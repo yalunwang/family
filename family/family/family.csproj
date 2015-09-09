@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="address.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="image\000.jpg" />
     <Content Include="image\44.png" />
     <Content Include="image\banner_ws1_sy.jpg" />
@@ -179,6 +180,9 @@
     <Compile Include="address.aspx.designer.cs">
       <DependentUpon>address.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="include\foot.ascx.cs">
       <DependentUpon>foot.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -258,6 +262,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="Web.config" />
+    <Content Include="log4net.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
