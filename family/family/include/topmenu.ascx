@@ -17,7 +17,7 @@
                 <li ><a href="/salary/salarylist.aspx" title="工资列表">工资列表</a></li>
                 <li ><a href="/salary/addSalary.aspx" title="添加工资">添加工资</a></li>
              
-                <li ><a href="#" title="工资统计">工资统计</a></li>
+                <li ><a href="/salary/salarycount.aspx" title="工资统计">工资统计</a></li>
               </ul>
         </li>
         <li class="line"></li>

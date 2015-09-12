@@ -163,6 +163,7 @@
     <Content Include="js\My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
     <Content Include="js\My97DatePicker\开发包\skin\whyGreen\img.gif" />
     <Content Include="salary\addSalary.aspx" />
+    <Content Include="salary\salarycount.aspx" />
     <Content Include="salary\salaryList.aspx" />
     <Content Include="user\login.aspx" />
     <Content Include="image\Web.config" />
@@ -238,6 +239,13 @@
     </Compile>
     <Compile Include="salary\addSalary.aspx.designer.cs">
       <DependentUpon>addSalary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="salary\salarycount.aspx.cs">
+      <DependentUpon>salarycount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="salary\salarycount.aspx.designer.cs">
+      <DependentUpon>salarycount.aspx</DependentUpon>
     </Compile>
     <Compile Include="salary\salaryList.aspx.cs">
       <DependentUpon>salaryList.aspx</DependentUpon>

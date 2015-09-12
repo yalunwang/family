@@ -12,7 +12,7 @@ namespace family.user
       
         protected void Page_Load(object sender, EventArgs e)
         {
-            var query = db.user.Where(o =>o.CityID==9999999 );
+            var query = db.user.Where(o =>o.CityID==9999999888 );
             foreach (var item in query)
             {
                 item.CityID = 2;

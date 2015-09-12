@@ -8,19 +8,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>工资列表</title>
       <link href="../css/my.css" rel="Stylesheet" type="text/css" />
 </head>
 <body>
-   
-  
-    <div>
-    
-        <uc1:topmenu ID="topmenu1" runat="server" />
-    
-    </div>
+   <div>
+       <uc1:topmenu ID="topmenu1" runat="server" />
+   </div>
 
-    <div class="main">
+   <div class="main">
         <div class="new_main">
            <div class="contents">
                <div class="title1"><h2>我的工资</h2></div>
@@ -73,6 +69,12 @@
                               </tr>
                             
                           <% } %>
+                        </tbody>
+                        <tbody style="border-top:1px solid #aaa ;text-align:center"> 
+                            <tr><td colspan="5" >合计</td>
+                                  <td colspan="5" ><%=totalucom %></td>
+                            </tr>
+                           
                         </tbody>
                       </table>
                  
