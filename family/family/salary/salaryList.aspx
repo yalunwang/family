@@ -42,11 +42,12 @@
                                   <td width="14%" scope="col">公司名称</td> 
                                    <td width="8%" scope="col">工资月份</td> 
                                    <td width="10%" scope="col">实发工资</td>
+                                  <td width="10%" scope="col">基本工资</td>
                                    <td width="8%" scope="col">个人所得税</td> 
                                    <td width="8%" scope="col">个人社保</td> 
                                    <td width="8%" scope="col">公积金</td> 
                                   <td width="10%" scope="col">发工资日期</td>
-                                   <td width="10%" scope="col">录入日期</td> 
+                                  
                                    <td width="10%" scope="col">是否任职</td> 
                                     <td width="10%" scope="col">操作</td>
                               </tr>
@@ -59,11 +60,12 @@
                                 <td width="14%" scope="col"><%=item.CompanyName %></td> 
                                    <td width="8%" scope="col"><%=item.Yearmonthvalue%></td> 
                                    <td width="10%" scope="col"><%=ZKEShop.Common.number.convTwo(item.RealMoney) %></td>
+                                 <td width="10%" scope="col"><%=ZKEShop.Common.number.convTwo(item.baseMoney) %></td> 
                                    <td width="8%" scope="col"><%=ZKEShop.Common.number.convTwo(item.usertax) %></td> 
                                    <td width="8%" scope="col"><%=ZKEShop.Common.number.convTwo(item.userShebao)%></td> 
                                    <td width="12%" scope="col"><%=ZKEShop.Common.number.convTwo(item.userFund) %></td> 
                                   <td width="10%" scope="col"><%=((DateTime)item.saralyDate).ToString("yyy-MM-dd")%></td>
-                                 <td width="10%" scope="col"><%=((DateTime)item.logdate).ToString("yyy-MM-dd") %></td> 
+                                <%-- <td width="10%" scope="col"><%=((DateTime)item.logdate).ToString("yyy-MM-dd") %></td> --%>
                                    <td width="10%" scope="col"><%=item.iscurrent==true?"是":"否" %></td> 
                                     <td width="10%" scope="col">编辑</td>
                               </tr>

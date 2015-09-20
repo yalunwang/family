@@ -18,34 +18,47 @@
             }
         })
     };
-function select2() {
+    function select2() {
     $("#S2").html("");
-    $.ajax(
-    {
-        type: "post",
-        url: "../address.aspx",
-        data: { "operation": "city", "provinceID": $('#S1').val() },
-        success: function (msg) {
-            for (var i = 0; i < msg.length; i++) {
-                $("#S2").append("<option value=" + msg[i].CityID + ">" + msg[i].CityName + "</option>");
+    if ($('#S1').val() > -1) {
+     
+        $.ajax(
+        {
+            type: "post",
+            url: "../address.aspx",
+            data: { "operation": "city", "provinceID": $('#S1').val() },
+            success: function (msg) {
+                for (var i = 0; i < msg.length; i++) {
+                    $("#S2").append("<option value=" + msg[i].CityID + ">" + msg[i].CityName + "</option>");
+                }
+                select3();
             }
-            select3();
-        }
-    })
+        })
+    }
+    else {
+        $("#S2").append("<option value='-1'>请选择</option>");
+        select3();
+    }
 };
 function select3() {
     $("#S3").html("");
-    $.ajax(
-    {
-        type: "post",
-        url: "../address.aspx",
-        data: { "operation": "cityZone", "cityID": $('#S2').val() },
-        success: function (msg) {
-            for (var i = 0; i < msg.length; i++) {
-                $("#S3").append("<option value=" + msg[i].cityZoneID + ">" + msg[i].cityZoneName + "</option>");
+    if ($('#S2').val() > -1) {
+        $.ajax(
+        {
+            type: "post",
+            url: "../address.aspx",
+            data: { "operation": "cityZone", "cityID": $('#S2').val() },
+            success: function (msg) {
+                for (var i = 0; i < msg.length; i++) {
+                    $("#S3").append("<option value=" + msg[i].cityZoneID + ">" + msg[i].cityZoneName + "</option>");
+                }
             }
-        }
-    })
+        })
+    }
+    else {
+        $("#S3").append( "<option value='-1'>请选择</option>");
+    }
+   
 };
 
 

@@ -271,6 +271,7 @@
     </None>
     <Content Include="Web.config" />
     <Content Include="log4net.config" />
+    <None Include="Properties\PublishProfiles\ww.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

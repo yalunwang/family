@@ -47,7 +47,7 @@
                                </tr>
                               <% } %>
                                <tr><td>合计</td>
-                                   <td><%=ZKEShop.Common.number.convTwo(totalucom) %></td>
+                                   <td><%=ZKEShop.Common.number.convTwo(totalMoney) %></td>
                                    <td><%=totalMonth %>个月</td>
                                </tr>
 
