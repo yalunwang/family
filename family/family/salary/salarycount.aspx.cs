@@ -12,8 +12,8 @@ namespace family.salary
     {
         public List<countmodel> mycountmodel;
         public decimal? totalMoney;//总收入
-        public string totalMonth;//中月份
-        //public int totalMonth;//中月份
+        public int totalMonth;//中月份
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             load();
@@ -29,8 +29,7 @@ namespace family.salary
                                 comID=o.userCompanyID,
                                 comName=o.CompanyName
                            }).Distinct().ToList();*/
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
+            
             var comlist = (from o in db.UserCompany
                            where o.UserID == LoginUser.UserID
                            select new
@@ -47,28 +46,26 @@ namespace family.salary
                 a.companyName = item.comName;
                 mycountmodel.Add(a);
             }
-            sw.Stop();
-            totalMonth = sw.ElapsedMilliseconds.ToString();
             //var jj = from o in db.SaralyV
             //         where o.UserID == LoginUser.UserID
             //         group o by o.userCompanyID into g
             //         select new { shh=g.Sum(o=>o.RealMoney),
             //        };
-           
-            var test = from s in db.SaralyV where 
-                       s.UserID == LoginUser.UserID group s by s.CompanyName;
+
+           /* var test = from s in db.SaralyV
+                       where
+                           s.UserID == LoginUser.UserID
+                       group s by s.CompanyName;
             foreach (var item in test)
             {
                 countmodel a = new countmodel();
                 a.monthcount = item.Count();
-                a.companyName =item.Key;
-                a.totalucomMoney=item.Sum(o=>o.RealMoney);
+                a.companyName = item.Key;
+                a.totalucomMoney = item.Sum(o => o.RealMoney);
                 mycountmodel.Add(a);
-            }
-
-       
-            //totalMoney = mycountmodel.Sum(o=>o.totalucomMoney);
-            //totalMonth = mycountmodel.Sum(o => o.monthcount);
+            }*/
+            totalMoney = mycountmodel.Sum(o=>o.totalucomMoney);
+            totalMonth = mycountmodel.Sum(o => o.monthcount);
         }
         public class countmodel
         {
