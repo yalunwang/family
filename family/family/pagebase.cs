@@ -121,6 +121,68 @@ namespace family
             public string ImgDomain { get; set; }
         }
 
+        /// <summary>
+        /// 分页
+        /// </summary>
+        /// <param name="total"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="PageNo"></param>
+        /// <returns></returns>
+        public string ShowPages(int total, int pageSize, int PageNo)
+        {
+            
+            int next = 0;
+            int pre = 0;
+            int startcount = 0;
+            int endcount = 0;
+            var str = new System.Text.StringBuilder();
+            next = PageNo + 1;
+            pre = PageNo - 1;
+            startcount = (PageNo + 3) > total ? total - 5 : PageNo - 2;//中间页起始序号 
+            //中间页终止序号 
+            endcount = PageNo < 3 ? 6 : PageNo + 3;
+            if (startcount < 1) { startcount = 1; } //为了避免输出的时候产生负数，设置如果小于1就从序号1开始 
+            if (total < endcount) { endcount = total; }//页码+5的可能性就会产生最终输出序号大于总页码，那么就要将其控制在页码数之内 
+            //  <Font1009 value="1009">首页</Font1009>
+            //<Font1010 value="1010">上一页</Font1010>
+            // <Font1011 value="1011">下一页</Font1011>
+            // <Font1012 value="1012">末页</Font1012>
+            if (PageNo > 1)
+            {
+                str.Append("<a  class='btn_b' href='javascript:GoPage(1)'>" + "首页"+ "</a>&nbsp;");
+                str.Append("<a class='btn_b' href='javascript:GoPage(" + (PageNo - 1) + ")'><span>◀</span>" + "上一页" + "</a>&nbsp;");
+            }
+            else
+            {
+                str.Append("<a class='btn_b no' href='javascript:void(0)'>" + "首页" + "</a>&nbsp;");
+            }
+
+            //中间页处理，这个增加时间复杂度，减小空间复杂度 
+            for (int i = startcount; i <= endcount; i++)
+            {
+                if (PageNo == i)
+                    str.Append("<a class='btn_b no' href='javascript:void(0)'>" + i + "</a>&nbsp;");
+                else
+                    str.Append("<a class='btn_b' href='javascript:GoPage(" + i + ")'>" + i + "</a>&nbsp;");
+            }
+
+            if (PageNo != total)
+            {
+                str.Append("<a  class='btn_b' href='javascript:GoPage(" + (PageNo + 1) + ")'>" +"下一页" + "<span>▶</span></a>&nbsp;");
+                str.Append("<a class='btn_b' href='javascript:GoPage(" + total + ")'>" + "末页" +
+
+"</a>&nbsp;");
+            }
+            else
+            {
+                str.Append("<a class='btn_b no' href='javascript:void(0)'>" + "末页" + "</a>&nbsp;");
+            }
+
+            return str.ToString();
+        }
+
+
+
       
     }
 }

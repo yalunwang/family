@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ZKEShop.Common;
+using family.framwork;
 namespace family.user
 {
     public partial class login : pagebase
@@ -12,11 +13,7 @@ namespace family.user
       
         protected void Page_Load(object sender, EventArgs e)
         {
-            var query = db.user.Where(o =>o.CityID==9999999888 );
-            foreach (var item in query)
-            {
-                item.CityID = 2;
-            }
+            
             string operation = ZKRequest.GetString("operation");
             FromUrl.Value = Convert.ToString(Server.UrlDecode(Request["FromUrl"]));
             switch(operation)
@@ -43,6 +40,9 @@ namespace family.user
             if (user.UserDal!= null)
             {
                 LoginUser = user.UserDal;
+                //测试发邮件，登录成功发送
+                family.framwork.Email rr = new family.framwork.Email(LoginUser);
+                rr.Mailinfo(ZKEShop.Common.MessageType.registersuccessful);
                 if (!string.IsNullOrEmpty(FromUrl.Value))
                     Response.Redirect(FromUrl.Value, true);
                 else

@@ -343,4 +343,99 @@
       <Column Name="Yearsign" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.MessageKind" Member="MessageKind">
+    <Type Name="MessageKind">
+      <Column Name="MessageKindID" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MessageKindName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPublic" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MessageDesc" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="FaxTemplateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InboxTemplateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MailTemplateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SMSTemplateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsRegularly" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TimeDay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeHours" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeMinutes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeSeconds" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimePeriod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsWebPub" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MessageKindType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="MailTemplate_MessageKind" Member="MailTemplate" ThisKey="MailTemplateID" OtherKey="MailTemplateID" Type="MailTemplate" IsForeignKey="true" />
+      <Association Name="InboxTemplate_MessageKind" Member="InboxTemplate" ThisKey="InboxTemplateID" OtherKey="InboxTemplateID" Type="InboxTemplate" IsForeignKey="true" />
+      <Association Name="SMSTemplate_MessageKind" Member="SMSTemplate" ThisKey="SMSTemplateID" OtherKey="SMSTemplateID" Type="SMSTemplate" IsForeignKey="true" />
+      <Association Name="FaxTemplate_MessageKind" Member="FaxTemplate" ThisKey="FaxTemplateID" OtherKey="FaxTemplateID" Type="FaxTemplate" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MailTemplate" Member="MailTemplate">
+    <Type Name="MailTemplate">
+      <Column Name="MailTemplateID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MailTemplateName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="MailPurpose" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="MailSubject" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="MailBody" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsWebPub" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="MailTemplate_MessageKind" Member="MessageKind" ThisKey="MailTemplateID" OtherKey="MailTemplateID" Type="MessageKind" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InboxTemplate" Member="InboxTemplate">
+    <Type Name="InboxTemplate">
+      <Column Name="InboxTemplateID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InboxTemplateName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="InboxPurpose" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="InboxSubject" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="InboxBody" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsWebpub" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="InboxTemplate_MessageKind" Member="MessageKind" ThisKey="InboxTemplateID" OtherKey="InboxTemplateID" Type="MessageKind" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SMSTemplate" Member="SMSTemplate">
+    <Type Name="SMSTemplate">
+      <Column Name="SMSTemplateID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SMSTemplateName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SMSBody" Type="System.String" DbType="NVarChar(800)" CanBeNull="true" />
+      <Column Name="OuterTemplateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="SMSTemplate_MessageKind" Member="MessageKind" ThisKey="SMSTemplateID" OtherKey="SMSTemplateID" Type="MessageKind" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PostMailInfo" Member="PostMailInfo">
+    <Type Name="PostMailInfo">
+      <Column Name="PostMailInfoID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ServerName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MailAddress" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MailPassword" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Frequency" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TargetServer" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="LimNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DayNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NowDay" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FaxTemplate" Member="FaxTemplate">
+    <Type Name="FaxTemplate">
+      <Column Name="FaxTemplateID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FaxTemplateName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FaxPurpose" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="FaxSubject" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="FaxBody" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="FaxTemplate_MessageKind" Member="MessageKind" ThisKey="FaxTemplateID" OtherKey="FaxTemplateID" Type="MessageKind" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SMSServer" Member="SMSServer">
+    <Type Name="SMSServer">
+      <Column Name="SMSServerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ServerIP" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ServerPort" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ZAccount" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FAccount" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IsWebPub" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SortID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SendNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LimitNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tMonth" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

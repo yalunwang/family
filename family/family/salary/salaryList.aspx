@@ -7,16 +7,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head >
     <title>工资列表</title>
       <link href="../css/my.css" rel="Stylesheet" type="text/css" />
+    <script src="../js/jquery.min.js"></script>
+    <style type="text/css">
+        td {
+        font:14px/1.5 Tahoma,Helvetica,Arial,'\5b8b\4f53',sans-serif;
+        }
+        .page {
+            /*background:#f3f3f3;*/
+        }
+       .page a.btn_b {
+                border:1px solid #ccc;
+                background:#fff;
+                padding:0px 7px;
+            }
+     .page .no {border:1px solid #e4e4e4; background:#f3f3f3;color:#7f7f7f }
+          
+      .pag .btn_b:hover{text-decoration:none;border-color: darkorange;color: darkorange;}
+    </style>
 </head>
 <body>
    <div>
        <uc1:topmenu ID="topmenu1" runat="server" />
    </div>
-
+    <form id="pageForm">
+        <input type="hidden" name="pageNo" id="pageNo" value="1"/>
    <div class="main">
+       
         <div class="new_main">
            <div class="contents">
                <div class="title1"><h2>我的工资</h2></div>
@@ -36,7 +55,7 @@
              <div class="con-box">
                      <div class="margin40">
                          
- <table  width="100%" border="0" cellspacing="0" cellpadding="0" style="border-top:1px solid #aaa" >
+                     <table  width="100%" border="0" cellspacing="0" cellpadding="0" style="border-top:1px solid #aaa" >
                         <tbody >
                               <tr style="text-align:center">
                                   <td width="14%" scope="col">公司名称</td> 
@@ -78,13 +97,35 @@
                             </tr>
                            
                         </tbody>
+                        <tbody style="border-top:1px solid #aaa ;text-align:center">
+                            <tr>
+                                
+                                  <td colspan="10" >
+                                      <div id="fenye" class="page" runat="server"></div>
+
+                                  </td>
+                               
+                            </tr>
+
+                           
+                        </tbody>
                       </table>
                  
-              </div>
+                      </div>
              </div>
+         </div>
           
-        </div>
+        
     </div>
+        </form>
     <uc1:foot runat="server" ID="foot" />
 </body>
 </html>
+<script>
+    function GoPage(pageNo)
+    {
+        var pageForm = $("#pageForm");
+        $("#pageNo").val(pageNo);
+        pageForm.submit();
+    }
+</script>

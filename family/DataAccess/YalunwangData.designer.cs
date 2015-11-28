@@ -81,6 +81,27 @@ namespace DataAccess
     partial void InsertUserCompany(UserCompany instance);
     partial void UpdateUserCompany(UserCompany instance);
     partial void DeleteUserCompany(UserCompany instance);
+    partial void InsertMessageKind(MessageKind instance);
+    partial void UpdateMessageKind(MessageKind instance);
+    partial void DeleteMessageKind(MessageKind instance);
+    partial void InsertMailTemplate(MailTemplate instance);
+    partial void UpdateMailTemplate(MailTemplate instance);
+    partial void DeleteMailTemplate(MailTemplate instance);
+    partial void InsertInboxTemplate(InboxTemplate instance);
+    partial void UpdateInboxTemplate(InboxTemplate instance);
+    partial void DeleteInboxTemplate(InboxTemplate instance);
+    partial void InsertSMSTemplate(SMSTemplate instance);
+    partial void UpdateSMSTemplate(SMSTemplate instance);
+    partial void DeleteSMSTemplate(SMSTemplate instance);
+    partial void InsertPostMailInfo(PostMailInfo instance);
+    partial void UpdatePostMailInfo(PostMailInfo instance);
+    partial void DeletePostMailInfo(PostMailInfo instance);
+    partial void InsertFaxTemplate(FaxTemplate instance);
+    partial void UpdateFaxTemplate(FaxTemplate instance);
+    partial void DeleteFaxTemplate(FaxTemplate instance);
+    partial void InsertSMSServer(SMSServer instance);
+    partial void UpdateSMSServer(SMSServer instance);
+    partial void DeleteSMSServer(SMSServer instance);
     #endregion
 		
 		public YalunwangDataDataContext() : 
@@ -254,6 +275,62 @@ namespace DataAccess
 			get
 			{
 				return this.GetTable<SaralyV>();
+			}
+		}
+		
+		public System.Data.Linq.Table<MessageKind> MessageKind
+		{
+			get
+			{
+				return this.GetTable<MessageKind>();
+			}
+		}
+		
+		public System.Data.Linq.Table<MailTemplate> MailTemplate
+		{
+			get
+			{
+				return this.GetTable<MailTemplate>();
+			}
+		}
+		
+		public System.Data.Linq.Table<InboxTemplate> InboxTemplate
+		{
+			get
+			{
+				return this.GetTable<InboxTemplate>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SMSTemplate> SMSTemplate
+		{
+			get
+			{
+				return this.GetTable<SMSTemplate>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PostMailInfo> PostMailInfo
+		{
+			get
+			{
+				return this.GetTable<PostMailInfo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<FaxTemplate> FaxTemplate
+		{
+			get
+			{
+				return this.GetTable<FaxTemplate>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SMSServer> SMSServer
+		{
+			get
+			{
+				return this.GetTable<SMSServer>();
 			}
 		}
 	}
@@ -7827,6 +7904,1964 @@ namespace DataAccess
 				{
 					this._Yearsign = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MessageKind")]
+	public partial class MessageKind : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private byte _MessageKindID;
+		
+		private string _MessageKindName;
+		
+		private System.Nullable<bool> _IsPublic;
+		
+		private string _MessageDesc;
+		
+		private System.Nullable<int> _FaxTemplateID;
+		
+		private System.Nullable<int> _InboxTemplateID;
+		
+		private System.Nullable<int> _MailTemplateID;
+		
+		private System.Nullable<int> _SMSTemplateID;
+		
+		private System.Nullable<bool> _IsRegularly;
+		
+		private System.Nullable<int> _TimeDay;
+		
+		private System.Nullable<int> _TimeHours;
+		
+		private System.Nullable<int> _TimeMinutes;
+		
+		private System.Nullable<int> _TimeSeconds;
+		
+		private System.Nullable<int> _TimePeriod;
+		
+		private System.Nullable<bool> _IsWebPub;
+		
+		private System.Nullable<int> _MessageKindType;
+		
+		private EntityRef<MailTemplate> _MailTemplate;
+		
+		private EntityRef<InboxTemplate> _InboxTemplate;
+		
+		private EntityRef<SMSTemplate> _SMSTemplate;
+		
+		private EntityRef<FaxTemplate> _FaxTemplate;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMessageKindIDChanging(byte value);
+    partial void OnMessageKindIDChanged();
+    partial void OnMessageKindNameChanging(string value);
+    partial void OnMessageKindNameChanged();
+    partial void OnIsPublicChanging(System.Nullable<bool> value);
+    partial void OnIsPublicChanged();
+    partial void OnMessageDescChanging(string value);
+    partial void OnMessageDescChanged();
+    partial void OnFaxTemplateIDChanging(System.Nullable<int> value);
+    partial void OnFaxTemplateIDChanged();
+    partial void OnInboxTemplateIDChanging(System.Nullable<int> value);
+    partial void OnInboxTemplateIDChanged();
+    partial void OnMailTemplateIDChanging(System.Nullable<int> value);
+    partial void OnMailTemplateIDChanged();
+    partial void OnSMSTemplateIDChanging(System.Nullable<int> value);
+    partial void OnSMSTemplateIDChanged();
+    partial void OnIsRegularlyChanging(System.Nullable<bool> value);
+    partial void OnIsRegularlyChanged();
+    partial void OnTimeDayChanging(System.Nullable<int> value);
+    partial void OnTimeDayChanged();
+    partial void OnTimeHoursChanging(System.Nullable<int> value);
+    partial void OnTimeHoursChanged();
+    partial void OnTimeMinutesChanging(System.Nullable<int> value);
+    partial void OnTimeMinutesChanged();
+    partial void OnTimeSecondsChanging(System.Nullable<int> value);
+    partial void OnTimeSecondsChanged();
+    partial void OnTimePeriodChanging(System.Nullable<int> value);
+    partial void OnTimePeriodChanged();
+    partial void OnIsWebPubChanging(System.Nullable<bool> value);
+    partial void OnIsWebPubChanged();
+    partial void OnMessageKindTypeChanging(System.Nullable<int> value);
+    partial void OnMessageKindTypeChanged();
+    #endregion
+		
+		public MessageKind()
+		{
+			this._MailTemplate = default(EntityRef<MailTemplate>);
+			this._InboxTemplate = default(EntityRef<InboxTemplate>);
+			this._SMSTemplate = default(EntityRef<SMSTemplate>);
+			this._FaxTemplate = default(EntityRef<FaxTemplate>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MessageKindID", DbType="TinyInt NOT NULL", IsPrimaryKey=true)]
+		public byte MessageKindID
+		{
+			get
+			{
+				return this._MessageKindID;
+			}
+			set
+			{
+				if ((this._MessageKindID != value))
+				{
+					this.OnMessageKindIDChanging(value);
+					this.SendPropertyChanging();
+					this._MessageKindID = value;
+					this.SendPropertyChanged("MessageKindID");
+					this.OnMessageKindIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MessageKindName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string MessageKindName
+		{
+			get
+			{
+				return this._MessageKindName;
+			}
+			set
+			{
+				if ((this._MessageKindName != value))
+				{
+					this.OnMessageKindNameChanging(value);
+					this.SendPropertyChanging();
+					this._MessageKindName = value;
+					this.SendPropertyChanged("MessageKindName");
+					this.OnMessageKindNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsPublic", DbType="Bit")]
+		public System.Nullable<bool> IsPublic
+		{
+			get
+			{
+				return this._IsPublic;
+			}
+			set
+			{
+				if ((this._IsPublic != value))
+				{
+					this.OnIsPublicChanging(value);
+					this.SendPropertyChanging();
+					this._IsPublic = value;
+					this.SendPropertyChanged("IsPublic");
+					this.OnIsPublicChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MessageDesc", DbType="VarChar(1000)")]
+		public string MessageDesc
+		{
+			get
+			{
+				return this._MessageDesc;
+			}
+			set
+			{
+				if ((this._MessageDesc != value))
+				{
+					this.OnMessageDescChanging(value);
+					this.SendPropertyChanging();
+					this._MessageDesc = value;
+					this.SendPropertyChanged("MessageDesc");
+					this.OnMessageDescChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FaxTemplateID", DbType="Int")]
+		public System.Nullable<int> FaxTemplateID
+		{
+			get
+			{
+				return this._FaxTemplateID;
+			}
+			set
+			{
+				if ((this._FaxTemplateID != value))
+				{
+					if (this._FaxTemplate.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFaxTemplateIDChanging(value);
+					this.SendPropertyChanging();
+					this._FaxTemplateID = value;
+					this.SendPropertyChanged("FaxTemplateID");
+					this.OnFaxTemplateIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InboxTemplateID", DbType="Int")]
+		public System.Nullable<int> InboxTemplateID
+		{
+			get
+			{
+				return this._InboxTemplateID;
+			}
+			set
+			{
+				if ((this._InboxTemplateID != value))
+				{
+					if (this._InboxTemplate.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnInboxTemplateIDChanging(value);
+					this.SendPropertyChanging();
+					this._InboxTemplateID = value;
+					this.SendPropertyChanged("InboxTemplateID");
+					this.OnInboxTemplateIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailTemplateID", DbType="Int")]
+		public System.Nullable<int> MailTemplateID
+		{
+			get
+			{
+				return this._MailTemplateID;
+			}
+			set
+			{
+				if ((this._MailTemplateID != value))
+				{
+					if (this._MailTemplate.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMailTemplateIDChanging(value);
+					this.SendPropertyChanging();
+					this._MailTemplateID = value;
+					this.SendPropertyChanged("MailTemplateID");
+					this.OnMailTemplateIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMSTemplateID", DbType="Int")]
+		public System.Nullable<int> SMSTemplateID
+		{
+			get
+			{
+				return this._SMSTemplateID;
+			}
+			set
+			{
+				if ((this._SMSTemplateID != value))
+				{
+					if (this._SMSTemplate.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSMSTemplateIDChanging(value);
+					this.SendPropertyChanging();
+					this._SMSTemplateID = value;
+					this.SendPropertyChanged("SMSTemplateID");
+					this.OnSMSTemplateIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsRegularly", DbType="Bit")]
+		public System.Nullable<bool> IsRegularly
+		{
+			get
+			{
+				return this._IsRegularly;
+			}
+			set
+			{
+				if ((this._IsRegularly != value))
+				{
+					this.OnIsRegularlyChanging(value);
+					this.SendPropertyChanging();
+					this._IsRegularly = value;
+					this.SendPropertyChanged("IsRegularly");
+					this.OnIsRegularlyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeDay", DbType="Int")]
+		public System.Nullable<int> TimeDay
+		{
+			get
+			{
+				return this._TimeDay;
+			}
+			set
+			{
+				if ((this._TimeDay != value))
+				{
+					this.OnTimeDayChanging(value);
+					this.SendPropertyChanging();
+					this._TimeDay = value;
+					this.SendPropertyChanged("TimeDay");
+					this.OnTimeDayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeHours", DbType="Int")]
+		public System.Nullable<int> TimeHours
+		{
+			get
+			{
+				return this._TimeHours;
+			}
+			set
+			{
+				if ((this._TimeHours != value))
+				{
+					this.OnTimeHoursChanging(value);
+					this.SendPropertyChanging();
+					this._TimeHours = value;
+					this.SendPropertyChanged("TimeHours");
+					this.OnTimeHoursChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeMinutes", DbType="Int")]
+		public System.Nullable<int> TimeMinutes
+		{
+			get
+			{
+				return this._TimeMinutes;
+			}
+			set
+			{
+				if ((this._TimeMinutes != value))
+				{
+					this.OnTimeMinutesChanging(value);
+					this.SendPropertyChanging();
+					this._TimeMinutes = value;
+					this.SendPropertyChanged("TimeMinutes");
+					this.OnTimeMinutesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeSeconds", DbType="Int")]
+		public System.Nullable<int> TimeSeconds
+		{
+			get
+			{
+				return this._TimeSeconds;
+			}
+			set
+			{
+				if ((this._TimeSeconds != value))
+				{
+					this.OnTimeSecondsChanging(value);
+					this.SendPropertyChanging();
+					this._TimeSeconds = value;
+					this.SendPropertyChanged("TimeSeconds");
+					this.OnTimeSecondsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimePeriod", DbType="Int")]
+		public System.Nullable<int> TimePeriod
+		{
+			get
+			{
+				return this._TimePeriod;
+			}
+			set
+			{
+				if ((this._TimePeriod != value))
+				{
+					this.OnTimePeriodChanging(value);
+					this.SendPropertyChanging();
+					this._TimePeriod = value;
+					this.SendPropertyChanged("TimePeriod");
+					this.OnTimePeriodChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsWebPub", DbType="Bit")]
+		public System.Nullable<bool> IsWebPub
+		{
+			get
+			{
+				return this._IsWebPub;
+			}
+			set
+			{
+				if ((this._IsWebPub != value))
+				{
+					this.OnIsWebPubChanging(value);
+					this.SendPropertyChanging();
+					this._IsWebPub = value;
+					this.SendPropertyChanged("IsWebPub");
+					this.OnIsWebPubChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MessageKindType", DbType="Int")]
+		public System.Nullable<int> MessageKindType
+		{
+			get
+			{
+				return this._MessageKindType;
+			}
+			set
+			{
+				if ((this._MessageKindType != value))
+				{
+					this.OnMessageKindTypeChanging(value);
+					this.SendPropertyChanging();
+					this._MessageKindType = value;
+					this.SendPropertyChanged("MessageKindType");
+					this.OnMessageKindTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MailTemplate_MessageKind", Storage="_MailTemplate", ThisKey="MailTemplateID", OtherKey="MailTemplateID", IsForeignKey=true)]
+		public MailTemplate MailTemplate
+		{
+			get
+			{
+				return this._MailTemplate.Entity;
+			}
+			set
+			{
+				MailTemplate previousValue = this._MailTemplate.Entity;
+				if (((previousValue != value) 
+							|| (this._MailTemplate.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MailTemplate.Entity = null;
+						previousValue.MessageKind.Remove(this);
+					}
+					this._MailTemplate.Entity = value;
+					if ((value != null))
+					{
+						value.MessageKind.Add(this);
+						this._MailTemplateID = value.MailTemplateID;
+					}
+					else
+					{
+						this._MailTemplateID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("MailTemplate");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InboxTemplate_MessageKind", Storage="_InboxTemplate", ThisKey="InboxTemplateID", OtherKey="InboxTemplateID", IsForeignKey=true)]
+		public InboxTemplate InboxTemplate
+		{
+			get
+			{
+				return this._InboxTemplate.Entity;
+			}
+			set
+			{
+				InboxTemplate previousValue = this._InboxTemplate.Entity;
+				if (((previousValue != value) 
+							|| (this._InboxTemplate.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._InboxTemplate.Entity = null;
+						previousValue.MessageKind.Remove(this);
+					}
+					this._InboxTemplate.Entity = value;
+					if ((value != null))
+					{
+						value.MessageKind.Add(this);
+						this._InboxTemplateID = value.InboxTemplateID;
+					}
+					else
+					{
+						this._InboxTemplateID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("InboxTemplate");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SMSTemplate_MessageKind", Storage="_SMSTemplate", ThisKey="SMSTemplateID", OtherKey="SMSTemplateID", IsForeignKey=true)]
+		public SMSTemplate SMSTemplate
+		{
+			get
+			{
+				return this._SMSTemplate.Entity;
+			}
+			set
+			{
+				SMSTemplate previousValue = this._SMSTemplate.Entity;
+				if (((previousValue != value) 
+							|| (this._SMSTemplate.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SMSTemplate.Entity = null;
+						previousValue.MessageKind.Remove(this);
+					}
+					this._SMSTemplate.Entity = value;
+					if ((value != null))
+					{
+						value.MessageKind.Add(this);
+						this._SMSTemplateID = value.SMSTemplateID;
+					}
+					else
+					{
+						this._SMSTemplateID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("SMSTemplate");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FaxTemplate_MessageKind", Storage="_FaxTemplate", ThisKey="FaxTemplateID", OtherKey="FaxTemplateID", IsForeignKey=true)]
+		public FaxTemplate FaxTemplate
+		{
+			get
+			{
+				return this._FaxTemplate.Entity;
+			}
+			set
+			{
+				FaxTemplate previousValue = this._FaxTemplate.Entity;
+				if (((previousValue != value) 
+							|| (this._FaxTemplate.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._FaxTemplate.Entity = null;
+						previousValue.MessageKind.Remove(this);
+					}
+					this._FaxTemplate.Entity = value;
+					if ((value != null))
+					{
+						value.MessageKind.Add(this);
+						this._FaxTemplateID = value.FaxTemplateID;
+					}
+					else
+					{
+						this._FaxTemplateID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("FaxTemplate");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MailTemplate")]
+	public partial class MailTemplate : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MailTemplateID;
+		
+		private string _MailTemplateName;
+		
+		private string _MailPurpose;
+		
+		private string _MailSubject;
+		
+		private string _MailBody;
+		
+		private System.Nullable<bool> _IsWebPub;
+		
+		private EntitySet<MessageKind> _MessageKind;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMailTemplateIDChanging(int value);
+    partial void OnMailTemplateIDChanged();
+    partial void OnMailTemplateNameChanging(string value);
+    partial void OnMailTemplateNameChanged();
+    partial void OnMailPurposeChanging(string value);
+    partial void OnMailPurposeChanged();
+    partial void OnMailSubjectChanging(string value);
+    partial void OnMailSubjectChanged();
+    partial void OnMailBodyChanging(string value);
+    partial void OnMailBodyChanged();
+    partial void OnIsWebPubChanging(System.Nullable<bool> value);
+    partial void OnIsWebPubChanged();
+    #endregion
+		
+		public MailTemplate()
+		{
+			this._MessageKind = new EntitySet<MessageKind>(new Action<MessageKind>(this.attach_MessageKind), new Action<MessageKind>(this.detach_MessageKind));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailTemplateID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MailTemplateID
+		{
+			get
+			{
+				return this._MailTemplateID;
+			}
+			set
+			{
+				if ((this._MailTemplateID != value))
+				{
+					this.OnMailTemplateIDChanging(value);
+					this.SendPropertyChanging();
+					this._MailTemplateID = value;
+					this.SendPropertyChanged("MailTemplateID");
+					this.OnMailTemplateIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailTemplateName", DbType="VarChar(200)")]
+		public string MailTemplateName
+		{
+			get
+			{
+				return this._MailTemplateName;
+			}
+			set
+			{
+				if ((this._MailTemplateName != value))
+				{
+					this.OnMailTemplateNameChanging(value);
+					this.SendPropertyChanging();
+					this._MailTemplateName = value;
+					this.SendPropertyChanged("MailTemplateName");
+					this.OnMailTemplateNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailPurpose", DbType="VarChar(400)")]
+		public string MailPurpose
+		{
+			get
+			{
+				return this._MailPurpose;
+			}
+			set
+			{
+				if ((this._MailPurpose != value))
+				{
+					this.OnMailPurposeChanging(value);
+					this.SendPropertyChanging();
+					this._MailPurpose = value;
+					this.SendPropertyChanged("MailPurpose");
+					this.OnMailPurposeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailSubject", DbType="VarChar(1000)")]
+		public string MailSubject
+		{
+			get
+			{
+				return this._MailSubject;
+			}
+			set
+			{
+				if ((this._MailSubject != value))
+				{
+					this.OnMailSubjectChanging(value);
+					this.SendPropertyChanging();
+					this._MailSubject = value;
+					this.SendPropertyChanged("MailSubject");
+					this.OnMailSubjectChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailBody", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string MailBody
+		{
+			get
+			{
+				return this._MailBody;
+			}
+			set
+			{
+				if ((this._MailBody != value))
+				{
+					this.OnMailBodyChanging(value);
+					this.SendPropertyChanging();
+					this._MailBody = value;
+					this.SendPropertyChanged("MailBody");
+					this.OnMailBodyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsWebPub", DbType="Bit")]
+		public System.Nullable<bool> IsWebPub
+		{
+			get
+			{
+				return this._IsWebPub;
+			}
+			set
+			{
+				if ((this._IsWebPub != value))
+				{
+					this.OnIsWebPubChanging(value);
+					this.SendPropertyChanging();
+					this._IsWebPub = value;
+					this.SendPropertyChanged("IsWebPub");
+					this.OnIsWebPubChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MailTemplate_MessageKind", Storage="_MessageKind", ThisKey="MailTemplateID", OtherKey="MailTemplateID")]
+		public EntitySet<MessageKind> MessageKind
+		{
+			get
+			{
+				return this._MessageKind;
+			}
+			set
+			{
+				this._MessageKind.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_MessageKind(MessageKind entity)
+		{
+			this.SendPropertyChanging();
+			entity.MailTemplate = this;
+		}
+		
+		private void detach_MessageKind(MessageKind entity)
+		{
+			this.SendPropertyChanging();
+			entity.MailTemplate = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InboxTemplate")]
+	public partial class InboxTemplate : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _InboxTemplateID;
+		
+		private string _InboxTemplateName;
+		
+		private string _InboxPurpose;
+		
+		private string _InboxSubject;
+		
+		private string _InboxBody;
+		
+		private System.Nullable<bool> _IsWebpub;
+		
+		private EntitySet<MessageKind> _MessageKind;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnInboxTemplateIDChanging(int value);
+    partial void OnInboxTemplateIDChanged();
+    partial void OnInboxTemplateNameChanging(string value);
+    partial void OnInboxTemplateNameChanged();
+    partial void OnInboxPurposeChanging(string value);
+    partial void OnInboxPurposeChanged();
+    partial void OnInboxSubjectChanging(string value);
+    partial void OnInboxSubjectChanged();
+    partial void OnInboxBodyChanging(string value);
+    partial void OnInboxBodyChanged();
+    partial void OnIsWebpubChanging(System.Nullable<bool> value);
+    partial void OnIsWebpubChanged();
+    #endregion
+		
+		public InboxTemplate()
+		{
+			this._MessageKind = new EntitySet<MessageKind>(new Action<MessageKind>(this.attach_MessageKind), new Action<MessageKind>(this.detach_MessageKind));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InboxTemplateID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int InboxTemplateID
+		{
+			get
+			{
+				return this._InboxTemplateID;
+			}
+			set
+			{
+				if ((this._InboxTemplateID != value))
+				{
+					this.OnInboxTemplateIDChanging(value);
+					this.SendPropertyChanging();
+					this._InboxTemplateID = value;
+					this.SendPropertyChanged("InboxTemplateID");
+					this.OnInboxTemplateIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InboxTemplateName", DbType="VarChar(200)")]
+		public string InboxTemplateName
+		{
+			get
+			{
+				return this._InboxTemplateName;
+			}
+			set
+			{
+				if ((this._InboxTemplateName != value))
+				{
+					this.OnInboxTemplateNameChanging(value);
+					this.SendPropertyChanging();
+					this._InboxTemplateName = value;
+					this.SendPropertyChanged("InboxTemplateName");
+					this.OnInboxTemplateNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InboxPurpose", DbType="VarChar(400)")]
+		public string InboxPurpose
+		{
+			get
+			{
+				return this._InboxPurpose;
+			}
+			set
+			{
+				if ((this._InboxPurpose != value))
+				{
+					this.OnInboxPurposeChanging(value);
+					this.SendPropertyChanging();
+					this._InboxPurpose = value;
+					this.SendPropertyChanged("InboxPurpose");
+					this.OnInboxPurposeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InboxSubject", DbType="VarChar(1000)")]
+		public string InboxSubject
+		{
+			get
+			{
+				return this._InboxSubject;
+			}
+			set
+			{
+				if ((this._InboxSubject != value))
+				{
+					this.OnInboxSubjectChanging(value);
+					this.SendPropertyChanging();
+					this._InboxSubject = value;
+					this.SendPropertyChanged("InboxSubject");
+					this.OnInboxSubjectChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InboxBody", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string InboxBody
+		{
+			get
+			{
+				return this._InboxBody;
+			}
+			set
+			{
+				if ((this._InboxBody != value))
+				{
+					this.OnInboxBodyChanging(value);
+					this.SendPropertyChanging();
+					this._InboxBody = value;
+					this.SendPropertyChanged("InboxBody");
+					this.OnInboxBodyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsWebpub", DbType="Bit")]
+		public System.Nullable<bool> IsWebpub
+		{
+			get
+			{
+				return this._IsWebpub;
+			}
+			set
+			{
+				if ((this._IsWebpub != value))
+				{
+					this.OnIsWebpubChanging(value);
+					this.SendPropertyChanging();
+					this._IsWebpub = value;
+					this.SendPropertyChanged("IsWebpub");
+					this.OnIsWebpubChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InboxTemplate_MessageKind", Storage="_MessageKind", ThisKey="InboxTemplateID", OtherKey="InboxTemplateID")]
+		public EntitySet<MessageKind> MessageKind
+		{
+			get
+			{
+				return this._MessageKind;
+			}
+			set
+			{
+				this._MessageKind.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_MessageKind(MessageKind entity)
+		{
+			this.SendPropertyChanging();
+			entity.InboxTemplate = this;
+		}
+		
+		private void detach_MessageKind(MessageKind entity)
+		{
+			this.SendPropertyChanging();
+			entity.InboxTemplate = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SMSTemplate")]
+	public partial class SMSTemplate : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _SMSTemplateID;
+		
+		private string _SMSTemplateName;
+		
+		private string _SMSBody;
+		
+		private int _OuterTemplateID;
+		
+		private EntitySet<MessageKind> _MessageKind;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSMSTemplateIDChanging(int value);
+    partial void OnSMSTemplateIDChanged();
+    partial void OnSMSTemplateNameChanging(string value);
+    partial void OnSMSTemplateNameChanged();
+    partial void OnSMSBodyChanging(string value);
+    partial void OnSMSBodyChanged();
+    partial void OnOuterTemplateIDChanging(int value);
+    partial void OnOuterTemplateIDChanged();
+    #endregion
+		
+		public SMSTemplate()
+		{
+			this._MessageKind = new EntitySet<MessageKind>(new Action<MessageKind>(this.attach_MessageKind), new Action<MessageKind>(this.detach_MessageKind));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMSTemplateID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int SMSTemplateID
+		{
+			get
+			{
+				return this._SMSTemplateID;
+			}
+			set
+			{
+				if ((this._SMSTemplateID != value))
+				{
+					this.OnSMSTemplateIDChanging(value);
+					this.SendPropertyChanging();
+					this._SMSTemplateID = value;
+					this.SendPropertyChanged("SMSTemplateID");
+					this.OnSMSTemplateIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMSTemplateName", DbType="NVarChar(100)")]
+		public string SMSTemplateName
+		{
+			get
+			{
+				return this._SMSTemplateName;
+			}
+			set
+			{
+				if ((this._SMSTemplateName != value))
+				{
+					this.OnSMSTemplateNameChanging(value);
+					this.SendPropertyChanging();
+					this._SMSTemplateName = value;
+					this.SendPropertyChanged("SMSTemplateName");
+					this.OnSMSTemplateNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMSBody", DbType="NVarChar(800)")]
+		public string SMSBody
+		{
+			get
+			{
+				return this._SMSBody;
+			}
+			set
+			{
+				if ((this._SMSBody != value))
+				{
+					this.OnSMSBodyChanging(value);
+					this.SendPropertyChanging();
+					this._SMSBody = value;
+					this.SendPropertyChanged("SMSBody");
+					this.OnSMSBodyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OuterTemplateID", DbType="Int NOT NULL")]
+		public int OuterTemplateID
+		{
+			get
+			{
+				return this._OuterTemplateID;
+			}
+			set
+			{
+				if ((this._OuterTemplateID != value))
+				{
+					this.OnOuterTemplateIDChanging(value);
+					this.SendPropertyChanging();
+					this._OuterTemplateID = value;
+					this.SendPropertyChanged("OuterTemplateID");
+					this.OnOuterTemplateIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SMSTemplate_MessageKind", Storage="_MessageKind", ThisKey="SMSTemplateID", OtherKey="SMSTemplateID")]
+		public EntitySet<MessageKind> MessageKind
+		{
+			get
+			{
+				return this._MessageKind;
+			}
+			set
+			{
+				this._MessageKind.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_MessageKind(MessageKind entity)
+		{
+			this.SendPropertyChanging();
+			entity.SMSTemplate = this;
+		}
+		
+		private void detach_MessageKind(MessageKind entity)
+		{
+			this.SendPropertyChanging();
+			entity.SMSTemplate = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PostMailInfo")]
+	public partial class PostMailInfo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private short _PostMailInfoID;
+		
+		private string _ServerName;
+		
+		private string _MailAddress;
+		
+		private string _MailPassword;
+		
+		private short _Frequency;
+		
+		private string _UserName;
+		
+		private string _TargetServer;
+		
+		private int _LimNum;
+		
+		private int _DayNum;
+		
+		private System.DateTime _NowDay;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPostMailInfoIDChanging(short value);
+    partial void OnPostMailInfoIDChanged();
+    partial void OnServerNameChanging(string value);
+    partial void OnServerNameChanged();
+    partial void OnMailAddressChanging(string value);
+    partial void OnMailAddressChanged();
+    partial void OnMailPasswordChanging(string value);
+    partial void OnMailPasswordChanged();
+    partial void OnFrequencyChanging(short value);
+    partial void OnFrequencyChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    partial void OnTargetServerChanging(string value);
+    partial void OnTargetServerChanged();
+    partial void OnLimNumChanging(int value);
+    partial void OnLimNumChanged();
+    partial void OnDayNumChanging(int value);
+    partial void OnDayNumChanged();
+    partial void OnNowDayChanging(System.DateTime value);
+    partial void OnNowDayChanged();
+    #endregion
+		
+		public PostMailInfo()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostMailInfoID", AutoSync=AutoSync.OnInsert, DbType="SmallInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public short PostMailInfoID
+		{
+			get
+			{
+				return this._PostMailInfoID;
+			}
+			set
+			{
+				if ((this._PostMailInfoID != value))
+				{
+					this.OnPostMailInfoIDChanging(value);
+					this.SendPropertyChanging();
+					this._PostMailInfoID = value;
+					this.SendPropertyChanged("PostMailInfoID");
+					this.OnPostMailInfoIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServerName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ServerName
+		{
+			get
+			{
+				return this._ServerName;
+			}
+			set
+			{
+				if ((this._ServerName != value))
+				{
+					this.OnServerNameChanging(value);
+					this.SendPropertyChanging();
+					this._ServerName = value;
+					this.SendPropertyChanged("ServerName");
+					this.OnServerNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailAddress", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string MailAddress
+		{
+			get
+			{
+				return this._MailAddress;
+			}
+			set
+			{
+				if ((this._MailAddress != value))
+				{
+					this.OnMailAddressChanging(value);
+					this.SendPropertyChanging();
+					this._MailAddress = value;
+					this.SendPropertyChanged("MailAddress");
+					this.OnMailAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailPassword", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string MailPassword
+		{
+			get
+			{
+				return this._MailPassword;
+			}
+			set
+			{
+				if ((this._MailPassword != value))
+				{
+					this.OnMailPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._MailPassword = value;
+					this.SendPropertyChanged("MailPassword");
+					this.OnMailPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Frequency", DbType="SmallInt NOT NULL")]
+		public short Frequency
+		{
+			get
+			{
+				return this._Frequency;
+			}
+			set
+			{
+				if ((this._Frequency != value))
+				{
+					this.OnFrequencyChanging(value);
+					this.SendPropertyChanging();
+					this._Frequency = value;
+					this.SendPropertyChanged("Frequency");
+					this.OnFrequencyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetServer", DbType="VarChar(500)")]
+		public string TargetServer
+		{
+			get
+			{
+				return this._TargetServer;
+			}
+			set
+			{
+				if ((this._TargetServer != value))
+				{
+					this.OnTargetServerChanging(value);
+					this.SendPropertyChanging();
+					this._TargetServer = value;
+					this.SendPropertyChanged("TargetServer");
+					this.OnTargetServerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LimNum", DbType="Int NOT NULL")]
+		public int LimNum
+		{
+			get
+			{
+				return this._LimNum;
+			}
+			set
+			{
+				if ((this._LimNum != value))
+				{
+					this.OnLimNumChanging(value);
+					this.SendPropertyChanging();
+					this._LimNum = value;
+					this.SendPropertyChanged("LimNum");
+					this.OnLimNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DayNum", DbType="Int NOT NULL")]
+		public int DayNum
+		{
+			get
+			{
+				return this._DayNum;
+			}
+			set
+			{
+				if ((this._DayNum != value))
+				{
+					this.OnDayNumChanging(value);
+					this.SendPropertyChanging();
+					this._DayNum = value;
+					this.SendPropertyChanged("DayNum");
+					this.OnDayNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NowDay", DbType="DateTime NOT NULL")]
+		public System.DateTime NowDay
+		{
+			get
+			{
+				return this._NowDay;
+			}
+			set
+			{
+				if ((this._NowDay != value))
+				{
+					this.OnNowDayChanging(value);
+					this.SendPropertyChanging();
+					this._NowDay = value;
+					this.SendPropertyChanged("NowDay");
+					this.OnNowDayChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FaxTemplate")]
+	public partial class FaxTemplate : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _FaxTemplateID;
+		
+		private string _FaxTemplateName;
+		
+		private string _FaxPurpose;
+		
+		private string _FaxSubject;
+		
+		private string _FaxBody;
+		
+		private EntitySet<MessageKind> _MessageKind;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnFaxTemplateIDChanging(int value);
+    partial void OnFaxTemplateIDChanged();
+    partial void OnFaxTemplateNameChanging(string value);
+    partial void OnFaxTemplateNameChanged();
+    partial void OnFaxPurposeChanging(string value);
+    partial void OnFaxPurposeChanged();
+    partial void OnFaxSubjectChanging(string value);
+    partial void OnFaxSubjectChanged();
+    partial void OnFaxBodyChanging(string value);
+    partial void OnFaxBodyChanged();
+    #endregion
+		
+		public FaxTemplate()
+		{
+			this._MessageKind = new EntitySet<MessageKind>(new Action<MessageKind>(this.attach_MessageKind), new Action<MessageKind>(this.detach_MessageKind));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FaxTemplateID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int FaxTemplateID
+		{
+			get
+			{
+				return this._FaxTemplateID;
+			}
+			set
+			{
+				if ((this._FaxTemplateID != value))
+				{
+					this.OnFaxTemplateIDChanging(value);
+					this.SendPropertyChanging();
+					this._FaxTemplateID = value;
+					this.SendPropertyChanged("FaxTemplateID");
+					this.OnFaxTemplateIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FaxTemplateName", DbType="VarChar(100)")]
+		public string FaxTemplateName
+		{
+			get
+			{
+				return this._FaxTemplateName;
+			}
+			set
+			{
+				if ((this._FaxTemplateName != value))
+				{
+					this.OnFaxTemplateNameChanging(value);
+					this.SendPropertyChanging();
+					this._FaxTemplateName = value;
+					this.SendPropertyChanged("FaxTemplateName");
+					this.OnFaxTemplateNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FaxPurpose", DbType="VarChar(400)")]
+		public string FaxPurpose
+		{
+			get
+			{
+				return this._FaxPurpose;
+			}
+			set
+			{
+				if ((this._FaxPurpose != value))
+				{
+					this.OnFaxPurposeChanging(value);
+					this.SendPropertyChanging();
+					this._FaxPurpose = value;
+					this.SendPropertyChanged("FaxPurpose");
+					this.OnFaxPurposeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FaxSubject", DbType="VarChar(1000)")]
+		public string FaxSubject
+		{
+			get
+			{
+				return this._FaxSubject;
+			}
+			set
+			{
+				if ((this._FaxSubject != value))
+				{
+					this.OnFaxSubjectChanging(value);
+					this.SendPropertyChanging();
+					this._FaxSubject = value;
+					this.SendPropertyChanged("FaxSubject");
+					this.OnFaxSubjectChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FaxBody", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string FaxBody
+		{
+			get
+			{
+				return this._FaxBody;
+			}
+			set
+			{
+				if ((this._FaxBody != value))
+				{
+					this.OnFaxBodyChanging(value);
+					this.SendPropertyChanging();
+					this._FaxBody = value;
+					this.SendPropertyChanged("FaxBody");
+					this.OnFaxBodyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FaxTemplate_MessageKind", Storage="_MessageKind", ThisKey="FaxTemplateID", OtherKey="FaxTemplateID")]
+		public EntitySet<MessageKind> MessageKind
+		{
+			get
+			{
+				return this._MessageKind;
+			}
+			set
+			{
+				this._MessageKind.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_MessageKind(MessageKind entity)
+		{
+			this.SendPropertyChanging();
+			entity.FaxTemplate = this;
+		}
+		
+		private void detach_MessageKind(MessageKind entity)
+		{
+			this.SendPropertyChanging();
+			entity.FaxTemplate = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SMSServer")]
+	public partial class SMSServer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _SMSServerID;
+		
+		private string _ServerIP;
+		
+		private string _ServerPort;
+		
+		private string _ZAccount;
+		
+		private string _FAccount;
+		
+		private string _UserName;
+		
+		private string _Password;
+		
+		private System.Nullable<bool> _IsWebPub;
+		
+		private System.Nullable<int> _SortID;
+		
+		private System.Nullable<int> _SendNum;
+		
+		private System.Nullable<int> _LimitNum;
+		
+		private System.Nullable<int> _tMonth;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSMSServerIDChanging(int value);
+    partial void OnSMSServerIDChanged();
+    partial void OnServerIPChanging(string value);
+    partial void OnServerIPChanged();
+    partial void OnServerPortChanging(string value);
+    partial void OnServerPortChanged();
+    partial void OnZAccountChanging(string value);
+    partial void OnZAccountChanged();
+    partial void OnFAccountChanging(string value);
+    partial void OnFAccountChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnIsWebPubChanging(System.Nullable<bool> value);
+    partial void OnIsWebPubChanged();
+    partial void OnSortIDChanging(System.Nullable<int> value);
+    partial void OnSortIDChanged();
+    partial void OnSendNumChanging(System.Nullable<int> value);
+    partial void OnSendNumChanged();
+    partial void OnLimitNumChanging(System.Nullable<int> value);
+    partial void OnLimitNumChanged();
+    partial void OntMonthChanging(System.Nullable<int> value);
+    partial void OntMonthChanged();
+    #endregion
+		
+		public SMSServer()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMSServerID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int SMSServerID
+		{
+			get
+			{
+				return this._SMSServerID;
+			}
+			set
+			{
+				if ((this._SMSServerID != value))
+				{
+					this.OnSMSServerIDChanging(value);
+					this.SendPropertyChanging();
+					this._SMSServerID = value;
+					this.SendPropertyChanged("SMSServerID");
+					this.OnSMSServerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServerIP", DbType="VarChar(200)")]
+		public string ServerIP
+		{
+			get
+			{
+				return this._ServerIP;
+			}
+			set
+			{
+				if ((this._ServerIP != value))
+				{
+					this.OnServerIPChanging(value);
+					this.SendPropertyChanging();
+					this._ServerIP = value;
+					this.SendPropertyChanged("ServerIP");
+					this.OnServerIPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServerPort", DbType="VarChar(50)")]
+		public string ServerPort
+		{
+			get
+			{
+				return this._ServerPort;
+			}
+			set
+			{
+				if ((this._ServerPort != value))
+				{
+					this.OnServerPortChanging(value);
+					this.SendPropertyChanging();
+					this._ServerPort = value;
+					this.SendPropertyChanged("ServerPort");
+					this.OnServerPortChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZAccount", DbType="VarChar(50)")]
+		public string ZAccount
+		{
+			get
+			{
+				return this._ZAccount;
+			}
+			set
+			{
+				if ((this._ZAccount != value))
+				{
+					this.OnZAccountChanging(value);
+					this.SendPropertyChanging();
+					this._ZAccount = value;
+					this.SendPropertyChanged("ZAccount");
+					this.OnZAccountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FAccount", DbType="VarChar(200)")]
+		public string FAccount
+		{
+			get
+			{
+				return this._FAccount;
+			}
+			set
+			{
+				if ((this._FAccount != value))
+				{
+					this.OnFAccountChanging(value);
+					this.SendPropertyChanging();
+					this._FAccount = value;
+					this.SendPropertyChanged("FAccount");
+					this.OnFAccountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="VarChar(50)")]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(50)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsWebPub", DbType="Bit")]
+		public System.Nullable<bool> IsWebPub
+		{
+			get
+			{
+				return this._IsWebPub;
+			}
+			set
+			{
+				if ((this._IsWebPub != value))
+				{
+					this.OnIsWebPubChanging(value);
+					this.SendPropertyChanging();
+					this._IsWebPub = value;
+					this.SendPropertyChanged("IsWebPub");
+					this.OnIsWebPubChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SortID", DbType="Int")]
+		public System.Nullable<int> SortID
+		{
+			get
+			{
+				return this._SortID;
+			}
+			set
+			{
+				if ((this._SortID != value))
+				{
+					this.OnSortIDChanging(value);
+					this.SendPropertyChanging();
+					this._SortID = value;
+					this.SendPropertyChanged("SortID");
+					this.OnSortIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SendNum", DbType="Int")]
+		public System.Nullable<int> SendNum
+		{
+			get
+			{
+				return this._SendNum;
+			}
+			set
+			{
+				if ((this._SendNum != value))
+				{
+					this.OnSendNumChanging(value);
+					this.SendPropertyChanging();
+					this._SendNum = value;
+					this.SendPropertyChanged("SendNum");
+					this.OnSendNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LimitNum", DbType="Int")]
+		public System.Nullable<int> LimitNum
+		{
+			get
+			{
+				return this._LimitNum;
+			}
+			set
+			{
+				if ((this._LimitNum != value))
+				{
+					this.OnLimitNumChanging(value);
+					this.SendPropertyChanging();
+					this._LimitNum = value;
+					this.SendPropertyChanged("LimitNum");
+					this.OnLimitNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tMonth", DbType="Int")]
+		public System.Nullable<int> tMonth
+		{
+			get
+			{
+				return this._tMonth;
+			}
+			set
+			{
+				if ((this._tMonth != value))
+				{
+					this.OntMonthChanging(value);
+					this.SendPropertyChanging();
+					this._tMonth = value;
+					this.SendPropertyChanged("tMonth");
+					this.OntMonthChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

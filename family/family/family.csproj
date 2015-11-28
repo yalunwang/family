@@ -293,6 +293,10 @@
       <Project>{a596e8c0-159d-472e-9900-876f428f1933}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\family.framwork\family.framwork.csproj">
+      <Project>{9c8cfec8-ff88-4d53-abf0-616856d9c476}</Project>
+      <Name>family.framwork</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
